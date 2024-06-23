@@ -2,15 +2,18 @@ using System;
 using System.Collections.Generic;
 using Scriptable_Objects;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Globals
 {
     /// <summary>
     /// receive the objects captured by the camera
     /// </summary>
-    public class LevelObjectiveDetector : MonoBehaviour
+    public class LevelManager : MonoBehaviour
     {
-        public LevelObjectivesSO LevelObjectivesSO;
+        public LevelObjectivesSO levelObjectivesSo;
+
+        private int currentLevel = 0;
 
         private void Start()
         {
@@ -34,7 +37,7 @@ namespace Globals
         /// <param name="tagsInPhoto"></param>
         public bool DetectObjectives(List<string> tagsInPhoto)
         {
-            LevelObjectivesSO.LevelObjective currentLevelObjective = LevelObjectivesSO.LevelObjectives[GameManager.Instance.currentLevel];
+            LevelObjectivesSO.LevelObjective currentLevelObjective = levelObjectivesSo.LevelObjectives[currentLevel];
 
             foreach (var objTag in tagsInPhoto)
             {
@@ -52,6 +55,24 @@ namespace Globals
             if (currentLevelObjective.winningObjectiveTags.Count == 0) return true;
 
             return false;
+        }
+
+        /// <summary>
+        /// called when level fails
+        /// </summary>
+        public void ReloadLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        /// <summary>
+        /// called when the photo meets all requirements
+        /// </summary>
+        public void NextLevel()
+        {
+            // TODO: load the next level
+
+            if (currentLevel < SceneManager.sceneCount - 1) currentLevel++;
         }
     }
 }
