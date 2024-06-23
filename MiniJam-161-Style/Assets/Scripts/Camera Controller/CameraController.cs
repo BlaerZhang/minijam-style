@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -96,8 +97,46 @@ public class CameraController : MonoBehaviour
             if (bounds.max.x < worldTopRight.x && bounds.max.y < worldTopRight.y && bounds.min.x > worldBottomLeft.x &&
                 bounds.min.y > worldBottomLeft.y)
             {
-                fullyInsideTags.Add(collider2D.tag);
-                collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+                //check if being covered over certain percentage
+                List<Collider2D> possibleCover = new List<Collider2D>();
+                possibleCover = Physics2D.OverlapBoxAll(collider2D.transform.position, bounds.size, 0).ToList();
+                float coveredPercentage = 0f;
+                foreach (var coverCollider in possibleCover)
+                {
+                    if (coverCollider.transform.position.y < collider2D.transform.position.y)
+                    {
+                        Bounds coverBounds = coverCollider.bounds;
+                        float minX = Mathf.Max(bounds.min.x, coverBounds.min.x);
+                        float minY = Mathf.Max(bounds.min.y, coverBounds.min.y);
+                        float maxX = Mathf.Min(bounds.max.x, coverBounds.max.x);
+                        float maxY = Mathf.Min(bounds.max.y, coverBounds.max.y);
+
+                        float intersectionWidth = maxX - minX;
+                        float intersectionHeight = maxY - minY;
+                        if (intersectionWidth > 0 && intersectionHeight > 0)
+                        {
+                            float intersectionArea = intersectionWidth * intersectionHeight;
+                            float currentCoveredPercentage = intersectionArea / (bounds.size.x * bounds.size.y);
+                            coveredPercentage = coveredPercentage < currentCoveredPercentage
+                                ? currentCoveredPercentage
+                                : coveredPercentage;
+                        }
+                    }
+                }
+                
+                switch (coveredPercentage)
+                {
+                    case >= 1:
+                        break;
+                    case >= 0.5f:
+                        partlyInsideTags.Add(collider2D.tag);
+                        collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                        break;
+                    case >= 0:
+                        fullyInsideTags.Add(collider2D.tag);
+                        collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+                        break;
+                }
             }
             else
             {
