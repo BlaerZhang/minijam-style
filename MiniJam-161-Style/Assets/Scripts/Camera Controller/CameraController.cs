@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -39,9 +40,9 @@ public class CameraController : MonoBehaviour
         }
         
         // shoot
-        if (isAiming & Input.GetMouseButtonDown(0))
+        if (isAiming && Input.GetMouseButtonDown(0))
         {
-            //TODO: Shoot Func
+            Shoot();
         }
         
         // zoom
@@ -62,4 +63,75 @@ public class CameraController : MonoBehaviour
             }
         }
     }
+    
+    List<List<string>> Shoot()
+    {
+        print("Shoot");
+        //Todo: check resource, then -1
+        
+        Vector3[] corners = new Vector3[4];
+        _rectTransform.GetWorldCorners(corners);
+        
+        // 这些角点是屏幕空间的坐标，对于Overlay模式，它们相当于屏幕坐标
+        Vector3 screenBottomLeft = corners[0];
+        Vector3 screenTopRight = corners[2];
+
+        // 将屏幕坐标转换为世界坐标
+        Vector3 worldBottomLeft = Camera.main.ScreenToWorldPoint(screenBottomLeft);
+        Vector3 worldTopRight = Camera.main.ScreenToWorldPoint(screenTopRight);
+        
+        // 计算中心点和大小
+        Vector3 center = (worldBottomLeft + worldTopRight) / 2;
+        Vector2 size = new Vector2(Mathf.Abs(worldTopRight.x - worldBottomLeft.x), Mathf.Abs(worldTopRight.y - worldBottomLeft.y));
+        
+        //Raycast
+        Collider2D[] overlapBoxHits = Physics2D.OverlapBoxAll(center, size, 0, LayerMask.GetMask("Shootable"));
+        
+        //check if fully inside
+        List<string> fullyInsideTags = new List<string>();
+        List<string> partlyInsideTags = new List<string>();
+        foreach (var collider2D in overlapBoxHits)
+        {
+            Bounds bounds = collider2D.bounds;
+            if (bounds.max.x < worldTopRight.x && bounds.max.y < worldTopRight.y && bounds.min.x > worldBottomLeft.x &&
+                bounds.min.y > worldBottomLeft.y)
+            {
+                fullyInsideTags.Add(collider2D.tag);
+                collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+            }
+            else
+            {
+                partlyInsideTags.Add(collider2D.tag);
+                collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            }
+        }
+
+        //Feedback
+
+        List<List<string>> returnList = new List<List<string>>();
+        returnList.Add(fullyInsideTags);
+        returnList.Add(partlyInsideTags);
+        return returnList;
+    }
+
+    // private void OnDrawGizmos()
+    // {
+    //     Vector3[] corners = new Vector3[4];
+    //     _rectTransform.GetWorldCorners(corners);
+    //     
+    //     // 这些角点是屏幕空间的坐标，对于Overlay模式，它们相当于屏幕坐标
+    //     Vector3 screenBottomLeft = corners[0];
+    //     Vector3 screenTopRight = corners[2];
+    //
+    //     // 将屏幕坐标转换为世界坐标
+    //     Vector3 worldBottomLeft = Camera.main.ScreenToWorldPoint(screenBottomLeft);
+    //     Vector3 worldTopRight = Camera.main.ScreenToWorldPoint(screenTopRight);
+    //     
+    //     // 计算中心点和大小
+    //     Vector3 center = (worldBottomLeft + worldTopRight) / 2;
+    //     Vector2 size = new Vector2(Mathf.Abs(worldTopRight.x - worldBottomLeft.x), Mathf.Abs(worldTopRight.y - worldBottomLeft.y));
+    //     
+    //     Gizmos.color = Color.green;
+    //     Gizmos.DrawWireCube(center, size);
+    // }
 }
