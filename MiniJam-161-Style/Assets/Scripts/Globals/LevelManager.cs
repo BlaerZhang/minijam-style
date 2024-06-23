@@ -20,17 +20,6 @@ namespace Globals
             throw new NotImplementedException();
         }
 
-        // TODO: register the photo shooting function with DetectObjectives()
-        private void OnEnable()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnDisable()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// detect if the photo meets the level objective
         /// </summary>
@@ -44,8 +33,10 @@ namespace Globals
                 if (currentLevelObjective.failingObjectiveTags.Contains(objTag))
                 {
                     // TODO: show level failing panel
+                    print("level fails");
 
                     ReloadLevel();
+                    return;
                 }
 
                 if (currentLevelObjective.winningObjectiveTags.Contains(objTag))
@@ -56,11 +47,13 @@ namespace Globals
 
             if (currentLevelObjective.winningObjectiveTags.Count == 0)
             {
-                // TODO: show the finished objective
+                // TODO: show the completed objective
+                print("a objective complete");
             }
             else
             {
                 // TODO: show level failing panel
+                print("level fails");
 
                 ReloadLevel();
             }
