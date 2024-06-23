@@ -17,10 +17,8 @@ namespace Globals
         {
             MainMenu,
             Playing,
-            Paused,
             LevelCompleted,
             LevelFailed,
-            GameOver
         }
 
         public GameState currentState;

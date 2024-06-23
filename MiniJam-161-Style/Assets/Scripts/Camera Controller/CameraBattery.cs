@@ -22,6 +22,11 @@ namespace Camera_Controller
             }
         }
 
+        private void Start()
+        {
+            CurrentBatteryPercentage = maxBatteryPercentage;
+        }
+
         public void RecoverBatteryPercentage()
         {
             if (CurrentBatteryPercentage <= 1)
