@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -17,11 +18,12 @@ namespace Globals
             MainMenu,
             Playing,
             Paused,
+            LevelCompleted,
+            LevelFailed,
             GameOver
         }
 
         public GameState currentState;
-
 
         void Awake()
         {
@@ -45,7 +47,19 @@ namespace Globals
             ChangeState(GameState.MainMenu);
         }
 
-        private void ChangeState(GameState newState)
+        private void Update()
+        {
+            // resume game after left-clicking in photo inspecting menu
+            if (currentState.Equals(GameState.LevelCompleted) || currentState.Equals(GameState.LevelFailed))
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    ChangeState(GameState.Playing);
+                }
+            }
+        }
+
+        public void ChangeState(GameState newState)
         {
             currentState = newState;
             OnStateChanged(newState);
@@ -59,41 +73,27 @@ namespace Globals
                     // SceneManager.LoadScene("MainMenu");
                     break;
                 case GameState.Playing:
-                    // SceneManager.LoadScene("GameScene");
+                    Time.timeScale = 1f;
+                    uiManager.ResetGameSceneUI();
                     break;
-                case GameState.Paused:
+                case GameState.LevelCompleted:
                     Time.timeScale = 0f;
+                    uiManager.ShowLevelCompletedMenu();
+                    levelManager.NextLevel();
                     break;
-                case GameState.GameOver:
-                    uiManager.ShowGameOverMenu(true);
+                case GameState.LevelFailed:
+                    Time.timeScale = 0f;
+                    uiManager.ShowLevelFailedMenu();
                     break;
             }
         }
 
-        public void StartGame()
+        /// <summary>
+        /// called when button clicked
+        /// </summary>
+        public void ReloadLevel()
         {
-            ChangeState(GameState.Playing);
-            Time.timeScale = 1f;
-        }
-
-        public void PauseGame()
-        {
-            ChangeState(GameState.Paused);
-        }
-
-        public void ResumeGame()
-        {
-            Time.timeScale = 1f;
-        }
-
-        public void GameOver()
-        {
-            ChangeState(GameState.GameOver);
-        }
-
-        public void ReturnToMainMenu()
-        {
-            ChangeState(GameState.MainMenu);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

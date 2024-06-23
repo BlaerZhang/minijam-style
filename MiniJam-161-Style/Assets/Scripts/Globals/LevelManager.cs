@@ -12,62 +12,36 @@ namespace Globals
     /// </summary>
     public class LevelManager : MonoBehaviour
     {
-        public LevelObjectivesSO levelObjectivesSO;
+        [SerializeField] private LevelObjectivesSO levelObjectivesSO;
+
+        [HideInInspector] public LevelObjectivesSO.LevelObjective currentLevelObjective;
 
         // level
         private int _maxLevel;
-        public int currentLevel = 0;
+        private int currentLevelIndex = 0;
 
         private void Start()
         {
             _maxLevel = levelObjectivesSO.levelObjectives.Count;
+            StartNewLevel();
         }
 
-        /// <summary>
-        /// detect if the photo meets the level objective
-        /// </summary>
-        /// TODO: fix
-        public void DetectObjectives(List<string> tagsFullyInPhoto, List<string> tagsPartlyInPhoto)
+        private void StartNewLevel()
         {
-            LevelObjectivesSO.LevelObjective currentLevelObjective = levelObjectivesSO.levelObjectives[currentLevel];
+            currentLevelObjective = levelObjectivesSO.levelObjectives[currentLevelIndex];
+        }
 
-            foreach (var objTag in tagsPartlyInPhoto)
+        public void NextLevel()
+        {
+            if (currentLevelIndex < _maxLevel - 1)
             {
-                if (currentLevelObjective.failingObjectiveTags.Contains(objTag))
-                {
-                    // TODO: show wrong target panel
-                    print("wrong target in photo");
-                }
-            }
-
-            foreach (var objTag in tagsFullyInPhoto)
-            {
-                if (currentLevelObjective.winningObjectiveTags.Contains(objTag))
-                {
-                    currentLevelObjective.winningObjectiveTags.Remove(objTag);
-                }
-            }
-
-            if (currentLevelObjective.winningObjectiveTags.Count == 0)
-            {
-                // TODO: show the completed objective
-                print("an objective completed");
-
-                if (currentLevel < _maxLevel - 1) currentLevel++;
+                currentLevelIndex++;
+                StartNewLevel();
             }
             else
             {
-                // TODO: show not enough target panel
-                print("not all targets in photo");
+                // TODO: finish the game
             }
-        }
-
-        /// <summary>
-        /// called when level fails
-        /// </summary>
-        public void ReloadLevel()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

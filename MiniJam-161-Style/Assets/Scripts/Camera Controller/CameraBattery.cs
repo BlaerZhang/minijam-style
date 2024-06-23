@@ -22,26 +22,7 @@ namespace Camera_Controller
             }
         }
 
-        private bool _isScoping = false;
-        public bool IsScoping
-        {
-            get => _isScoping;
-            set => _isScoping = value;
-        }
-
-        private void Update()
-        {
-            if (_isScoping)
-            {
-                ReduceBatteryPercentage();
-            }
-            else
-            {
-                RecoverBatteryPercentage();
-            }
-        }
-
-        private void RecoverBatteryPercentage()
+        public void RecoverBatteryPercentage()
         {
             if (CurrentBatteryPercentage <= 1)
             {
@@ -56,8 +37,7 @@ namespace Camera_Controller
         /// <summary>
         /// called when fully open the scope
         /// </summary>
-        // TODO: bullet time count down
-        private void ReduceBatteryPercentage()
+        public void ReduceBatteryPercentage()
         {
             if (CurrentBatteryPercentage > 0)
             {
@@ -66,14 +46,8 @@ namespace Camera_Controller
             else
             {
                 CurrentBatteryPercentage = 0;
-                OnBatteryDead();
+                CameraController.OnBatteryDead?.Invoke();
             }
-        }
-
-        private void OnBatteryDead()
-        {
-            // TODO: quit scoping
-            IsScoping = false;
         }
     }
 }

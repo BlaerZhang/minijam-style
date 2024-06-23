@@ -1,31 +1,40 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
-public class CameraFrameController : MonoBehaviour
+namespace Camera_Controller
 {
-    public float changeScaleDuration = 0.1f;
-    [Range(0,1)] public float followSpeed = 0.05f;
-    public GameObject photographyCamera;
-
-    private RectTransform _rectTransform;
-
-    private void Start()
+    public class CameraFrameController : MonoBehaviour
     {
-        _rectTransform = GetComponent<RectTransform>();
-    }
+        public GameObject photographyCamera;
 
-    public void UpdateSize(Vector2 sizeDelta)
-    {
-        _rectTransform.DOSizeDelta(sizeDelta, changeScaleDuration);
-    }
+        [Header("Camera Frame Settings")]
+        public float changeScaleDuration = 0.1f;
+        [Range(0,1)] public float followSpeed = 0.05f;
 
-    private void Update()
-    {
-        // follow actual camera
-        transform.position += (photographyCamera.transform.position - transform.position) * followSpeed;
+        private RectTransform _rectTransform;
+        private Image _image;
+
+        private void Start()
+        {
+            _rectTransform = GetComponent<RectTransform>();
+            _image = GetComponent<Image>();
+        }
+
+        public void UpdateFrameImage(Sprite sprite)
+        {
+            _image.sprite = sprite;
+        }
+
+        public void UpdateSize(Vector2 sizeDelta)
+        {
+            _rectTransform.DOSizeDelta(sizeDelta, changeScaleDuration);
+        }
+
+        private void Update()
+        {
+            // follow actual camera
+            transform.position += (photographyCamera.transform.position - transform.position) * followSpeed;
+        }
     }
 }
