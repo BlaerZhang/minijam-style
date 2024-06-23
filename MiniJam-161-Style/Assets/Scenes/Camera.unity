@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93855048
 MonoBehaviour:
@@ -211,6 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f2deed6bbbae14f85f6acbaec451fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraFrameController: {fileID: 1907939955}
+  zoomDelta: 100
+  cameraXLimits: {x: 100, y: 1920}
 --- !u!1 &1277437741
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +558,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1907939953
 MonoBehaviour:
@@ -608,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeScaleDuration: 0.1
-  followSpeed: 10
+  followSpeed: 0.1
   photographyCamera: {fileID: 93855046}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

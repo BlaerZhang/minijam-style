@@ -8,12 +8,19 @@ using UnityEngine.Serialization;
 public class CameraFrameController : MonoBehaviour
 {
     public float changeScaleDuration = 0.1f;
-    public float followSpeed = 10000;
+    [Range(0,1)] public float followSpeed = 0.05f;
     public GameObject photographyCamera;
-    
-    public void UpdateSize(float scale)
+
+    private RectTransform _rectTransform;
+
+    private void Start()
     {
-        transform.DOScale(scale, changeScaleDuration);
+        _rectTransform = GetComponent<RectTransform>();
+    }
+
+    public void UpdateSize(Vector2 sizeDelta)
+    {
+        _rectTransform.DOSizeDelta(sizeDelta, changeScaleDuration);
     }
 
     private void Update()
