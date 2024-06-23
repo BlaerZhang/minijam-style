@@ -13,7 +13,7 @@ namespace Globals
     {
         public LevelObjectivesSO levelObjectivesSo;
 
-        private int currentLevel = 0;
+        private int _currentLevel = 0;
 
         private void Start()
         {
@@ -35,15 +35,17 @@ namespace Globals
         /// detect if the photo meets the level objective
         /// </summary>
         /// <param name="tagsInPhoto"></param>
-        public bool DetectObjectives(List<string> tagsInPhoto)
+        public void DetectObjectives(List<string> tagsInPhoto)
         {
-            LevelObjectivesSO.LevelObjective currentLevelObjective = levelObjectivesSo.LevelObjectives[currentLevel];
+            LevelObjectivesSO.LevelObjective currentLevelObjective = levelObjectivesSo.LevelObjectives[_currentLevel];
 
             foreach (var objTag in tagsInPhoto)
             {
                 if (currentLevelObjective.failingObjectiveTags.Contains(objTag))
                 {
-                    return false;
+                    // TODO: show level failing panel
+
+                    ReloadLevel();
                 }
 
                 if (currentLevelObjective.winningObjectiveTags.Contains(objTag))
@@ -52,27 +54,33 @@ namespace Globals
                 }
             }
 
-            if (currentLevelObjective.winningObjectiveTags.Count == 0) return true;
+            if (currentLevelObjective.winningObjectiveTags.Count == 0)
+            {
+                // TODO: show the finished objective
+            }
+            else
+            {
+                // TODO: show level failing panel
 
-            return false;
+                ReloadLevel();
+            }
         }
 
         /// <summary>
         /// called when level fails
         /// </summary>
-        public void ReloadLevel()
+        private void ReloadLevel()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        /// <summary>
-        /// called when the photo meets all requirements
-        /// </summary>
-        public void NextLevel()
-        {
-            // TODO: load the next level
-
-            if (currentLevel < SceneManager.sceneCount - 1) currentLevel++;
-        }
+        // /// <summary>
+        // /// called when the photo meets all requirements
+        // /// </summary>
+        // private void NextLevel()
+        // {
+        //
+        //     if (currentLevel < SceneManager.sceneCount - 1) currentLevel++;
+        // }
     }
 }
