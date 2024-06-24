@@ -130,18 +130,18 @@ public class CameraController : MonoBehaviour
                         break;
                     case >= 0.5f:
                         partlyInsideTags.Add(collider2D.tag);
-                        collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                        collider2D.GetComponent<SpriteRenderer>().color = Color.red;
                         break;
                     case >= 0:
                         fullyInsideTags.Add(collider2D.tag);
-                        collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+                        collider2D.GetComponent<SpriteRenderer>().color = Color.green;
                         break;
                 }
             }
             else
             {
                 partlyInsideTags.Add(collider2D.tag);
-                collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                collider2D.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }
 

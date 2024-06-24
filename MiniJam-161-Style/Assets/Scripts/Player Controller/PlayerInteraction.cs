@@ -18,8 +18,9 @@ public class PlayerInteraction : MonoBehaviour
     //using collider to determine whether an object is interactable
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.CompareTag("Interactable")) return;
         Debug.Log("got in");
-
+        
         IItem item = other.GetComponent<IItem>();
         if (item != null)
         {
@@ -29,7 +30,8 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("got out:", other);
+        if (!other.CompareTag("Interactable")) return;
+        Debug.Log("got out:" + other.name);
         IItem item = other.GetComponent<IItem>();
         if (item != null && item == nearbyItem)
         {

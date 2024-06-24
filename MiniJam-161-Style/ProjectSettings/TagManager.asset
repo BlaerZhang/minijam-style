@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Passerby
+  - Forest
+  - Interactable
+  - Bird
+  - Monster
+  - NightCityLightOn
+  - NightCityLightOff
   layers:
   - Default
   - TransparentFX
@@ -14,8 +20,8 @@ TagManager:
   - UI
   - 
   - Shootable
-  - 
-  - 
+  - Collider
+  - Interactable
   - 
   - 
   - 
