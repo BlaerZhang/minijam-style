@@ -1,23 +1,25 @@
 using System;
+using System.Collections;
+using Globals;
 using UnityEngine;
 
 namespace UIFunction
 {
     public class PhotoInspector : MonoBehaviour
     {
-        private void OnMouseDown()
+        public float timeToInspect = 2f;
+
+        private void OnEnable()
         {
-            CloseInspector();
+            StartCoroutine(CloseInspector());
         }
 
-        private void CloseInspector()
+        private IEnumerator CloseInspector()
         {
-            gameObject.SetActive(false);
-        }
+            yield return new WaitForSecondsRealtime(timeToInspect);
+            GameManager.Instance.ChangeState(GameManager.GameState.Playing);
 
-        public void SavePhoto()
-        {
-
+            // TODO: indicate save photo button
         }
     }
 }
