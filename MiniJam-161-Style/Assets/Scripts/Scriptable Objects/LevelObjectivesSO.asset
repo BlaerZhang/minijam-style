@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelObjectives:
   - winningObjectiveTags:
-    - Passerby
-    failingObjectiveTags:
     - Player
+    - NightCityLightOff
+    - Bird
+    failingObjectiveTags: []
   - winningObjectiveTags: []
     failingObjectiveTags: []

@@ -67,7 +67,7 @@ namespace Globals
                 case GameState.LevelCompleted:
                     PauseGame();
                     uiManager.ShowLevelCompletedMenu();
-                    levelManager.NextLevel();
+                    // levelManager.NextLevel();
                     break;
                 case GameState.LevelFailed:
                     PauseGame();
