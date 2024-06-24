@@ -19,6 +19,9 @@ namespace Camera_Controller
         public Vector2 cameraXLimits;
         public Vector2 defaultCameraFrameSize = new Vector2(300, 200);
 
+        [Header("Slow Motion Settings")]
+        public float slowMotionTimeScale = 0.4f;
+
         public static Action OnBatteryDead;
 
         private RectTransform _rectTransform;
@@ -83,7 +86,11 @@ namespace Camera_Controller
         private void StartAiming()
         {
             _isAiming = true;
+
             cameraFrameController.ChangeToAimingFrameObject();
+
+            StartBulletTime();
+
             _currentFrameSize = defaultCameraFrameSize;
             _rectTransform.sizeDelta = defaultCameraFrameSize;
             cameraFrameController.UpdateSize(_currentFrameSize);
@@ -91,9 +98,10 @@ namespace Camera_Controller
 
         private void StopAiming()
         {
-            print("Stop aiming");
             _isAiming = false;
             cameraFrameController.ChangeToDefaultFrameObject();
+
+            StopBulletTime();
 
             _rectTransform.sizeDelta = Vector2.zero;
             cameraFrameController.UpdateSize(Vector2.zero);
@@ -118,16 +126,15 @@ namespace Camera_Controller
                 }
             }
         }
-
-        // TODO: bullet time
+        
         private void StartBulletTime()
         {
-
+            Time.timeScale = slowMotionTimeScale;
         }
 
         private void StopBulletTime()
         {
-
+            Time.timeScale = 1f;
         }
 
         private void Shoot()
