@@ -1,31 +1,50 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
-public class CameraFrameController : MonoBehaviour
+namespace Camera_Controller
 {
-    public float changeScaleDuration = 0.1f;
-    [Range(0,1)] public float followSpeed = 0.05f;
-    public GameObject photographyCamera;
-
-    private RectTransform _rectTransform;
-
-    private void Start()
+    public class CameraFrameController : MonoBehaviour
     {
-        _rectTransform = GetComponent<RectTransform>();
-    }
+        public GameObject photographyCamera;
 
-    public void UpdateSize(Vector2 sizeDelta)
-    {
-        _rectTransform.DOSizeDelta(sizeDelta, changeScaleDuration);
-    }
+        [Header("Camera Frame Object")]
+        public GameObject defaultFrameObject;
+        public GameObject aimingFrameObject;
 
-    private void Update()
-    {
-        // follow actual camera
-        transform.position += (photographyCamera.transform.position - transform.position) * followSpeed;
+        [Header("Camera Frame Settings")]
+        public float changeScaleDuration = 0.1f;
+        [Range(0,1)] public float followSpeed = 0.05f;
+
+        private RectTransform _aimingFrameRectTransform;
+        private Image _image;
+
+        private void Start()
+        {
+            _aimingFrameRectTransform = aimingFrameObject.GetComponent<RectTransform>();
+        }
+
+        public void ChangeToAimingFrameObject()
+        {
+            defaultFrameObject.SetActive(false);
+            aimingFrameObject.SetActive(true);
+        }
+
+        public void ChangeToDefaultFrameObject()
+        {
+            defaultFrameObject.SetActive(true);
+            UpdateSize(Vector2.zero);
+        }
+
+        public void UpdateSize(Vector2 sizeDelta)
+        {
+            _aimingFrameRectTransform.DOSizeDelta(sizeDelta, changeScaleDuration).SetUpdate(true);
+        }
+
+        private void Update()
+        {
+            // follow actual camera
+            transform.position += (photographyCamera.transform.position - transform.position) * followSpeed;
+        }
     }
 }
