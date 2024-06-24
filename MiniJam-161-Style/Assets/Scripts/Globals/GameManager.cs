@@ -23,6 +23,9 @@ namespace Globals
 
         public GameState currentState;
 
+        // TODO: block player movement
+        public bool allowInput = true;
+
         void Awake()
         {
             if (Instance == null)
@@ -45,18 +48,6 @@ namespace Globals
             ChangeState(GameState.MainMenu);
         }
 
-        private void Update()
-        {
-            // resume game after left-clicking in photo inspecting menu
-            if (currentState.Equals(GameState.LevelCompleted) || currentState.Equals(GameState.LevelFailed))
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    ChangeState(GameState.Playing);
-                }
-            }
-        }
-
         public void ChangeState(GameState newState)
         {
             currentState = newState;
@@ -71,19 +62,31 @@ namespace Globals
                     // SceneManager.LoadScene("MainMenu");
                     break;
                 case GameState.Playing:
-                    Time.timeScale = 1f;
-                    uiManager.ResetGameSceneUI();
+                    ResumeGame();
                     break;
                 case GameState.LevelCompleted:
-                    Time.timeScale = 0f;
+                    PauseGame();
                     uiManager.ShowLevelCompletedMenu();
                     levelManager.NextLevel();
                     break;
                 case GameState.LevelFailed:
-                    Time.timeScale = 0f;
+                    PauseGame();
                     uiManager.ShowLevelFailedMenu();
                     break;
             }
+        }
+
+        public void ResumeGame()
+        {
+            Time.timeScale = 1f;
+            allowInput = true;
+            uiManager.ResetGameSceneUI();
+        }
+
+        public void PauseGame()
+        {
+            Time.timeScale = 0f;
+            allowInput = false;
         }
 
         /// <summary>

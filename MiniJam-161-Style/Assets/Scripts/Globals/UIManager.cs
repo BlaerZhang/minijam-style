@@ -38,11 +38,13 @@ namespace Globals
 
         public void ShowLevelCompletedMenu()
         {
+            print("ShowLevelCompletedMenu");
             levelCompletedMenu.SetActive(true);
         }
 
         public void ShowLevelFailedMenu()
         {
+            print("ShowLevelFailedMenu");
             levelFailedMenu.SetActive(true);
         }
 

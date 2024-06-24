@@ -14,10 +14,6 @@ namespace Camera_Controller
         public CameraFrameController cameraFrameController;
         public CameraBattery cameraBattery;
 
-        [Header("Camera Frame Image")]
-        public Sprite defaultFrameImage;
-        public Sprite aimingFrameImage;
-
         [Header("Camera Settings")]
         public float zoomDelta = 100f;
         public Vector2 cameraXLimits;
@@ -46,6 +42,8 @@ namespace Camera_Controller
 
         void Update()
         {
+            if (!GameManager.Instance.allowInput) return;
+
             // follow mouse
             transform.position = Input.mousePosition;
 
@@ -85,10 +83,7 @@ namespace Camera_Controller
         private void StartAiming()
         {
             _isAiming = true;
-            cameraFrameController.UpdateFrameImage(aimingFrameImage);
-
-            // TODO: gradually open
-
+            cameraFrameController.ChangeToAimingFrameObject();
             _currentFrameSize = defaultCameraFrameSize;
             _rectTransform.sizeDelta = defaultCameraFrameSize;
             cameraFrameController.UpdateSize(_currentFrameSize);
@@ -96,8 +91,9 @@ namespace Camera_Controller
 
         private void StopAiming()
         {
+            print("Stop aiming");
             _isAiming = false;
-            cameraFrameController.UpdateFrameImage(defaultFrameImage);
+            cameraFrameController.ChangeToDefaultFrameObject();
 
             _rectTransform.sizeDelta = Vector2.zero;
             cameraFrameController.UpdateSize(Vector2.zero);
@@ -222,11 +218,25 @@ namespace Camera_Controller
         /// </summary>
         private void DetectObjectives(List<string> tagsFullyInPhoto, List<string> tagsPartlyInPhoto)
         {
+            // prepare the objective data
             LevelObjectivesSO.LevelObjective currentLevelObjective = GameManager.Instance.levelManager.currentLevelObjective;
 
+            List<string> winningObjectiveTags = new List<string>();
+            List<string> failingObjectiveTags = new List<string>();
+
+            foreach (var objTag in currentLevelObjective.winningObjectiveTags)
+            {
+                winningObjectiveTags.Add(objTag);
+            }
+            foreach (var objTag in currentLevelObjective.failingObjectiveTags)
+            {
+                failingObjectiveTags.Add(objTag);
+            }
+
+            // check partly in-photo targets
             foreach (var objTag in tagsPartlyInPhoto)
             {
-                if (currentLevelObjective.failingObjectiveTags.Contains(objTag))
+                if (failingObjectiveTags.Contains(objTag))
                 {
                     // TODO: show wrong target panel
                     print("wrong target in photo");
@@ -235,9 +245,10 @@ namespace Camera_Controller
                 }
             }
 
+            // check fully in-photo targets
             foreach (var objTag in tagsFullyInPhoto)
             {
-                if (currentLevelObjective.failingObjectiveTags.Contains(objTag))
+                if (failingObjectiveTags.Contains(objTag))
                 {
                     // TODO: show wrong target panel
                     print("wrong target in photo");
@@ -245,13 +256,15 @@ namespace Camera_Controller
                     return;
                 }
 
-                if (currentLevelObjective.winningObjectiveTags.Contains(objTag))
+                if (winningObjectiveTags.Contains(objTag))
                 {
-                    currentLevelObjective.winningObjectiveTags.Remove(objTag);
+                    winningObjectiveTags.Remove(objTag);
+                    print("a target found");
                 }
             }
 
-            if (currentLevelObjective.winningObjectiveTags.Count == 0)
+            // check if all targets are found
+            if (winningObjectiveTags.Count == 0)
             {
                 // TODO: show the completed objective
                 print("an objective completed");

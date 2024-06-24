@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca10bb96059f4903a6392012963cb417, type: 3}
   m_Name: LevelObjectivesSO
   m_EditorClassIdentifier: 
-  levelObjectives: []
+  levelObjectives:
+  - winningObjectiveTags:
+    - Passerby
+    failingObjectiveTags:
+    - Player
+  - winningObjectiveTags: []
+    failingObjectiveTags: []

@@ -8,27 +8,37 @@ namespace Camera_Controller
     {
         public GameObject photographyCamera;
 
+        [Header("Camera Frame Object")]
+        public GameObject defaultFrameObject;
+        public GameObject aimingFrameObject;
+
         [Header("Camera Frame Settings")]
         public float changeScaleDuration = 0.1f;
         [Range(0,1)] public float followSpeed = 0.05f;
 
-        private RectTransform _rectTransform;
+        private RectTransform _aimingFrameRectTransform;
         private Image _image;
 
         private void Start()
         {
-            _rectTransform = GetComponent<RectTransform>();
-            _image = GetComponent<Image>();
+            _aimingFrameRectTransform = aimingFrameObject.GetComponent<RectTransform>();
         }
 
-        public void UpdateFrameImage(Sprite sprite)
+        public void ChangeToAimingFrameObject()
         {
-            _image.sprite = sprite;
+            defaultFrameObject.SetActive(false);
+            aimingFrameObject.SetActive(true);
+        }
+
+        public void ChangeToDefaultFrameObject()
+        {
+            defaultFrameObject.SetActive(true);
+            UpdateSize(Vector2.zero);
         }
 
         public void UpdateSize(Vector2 sizeDelta)
         {
-            _rectTransform.DOSizeDelta(sizeDelta, changeScaleDuration);
+            _aimingFrameRectTransform.DOSizeDelta(sizeDelta, changeScaleDuration).SetUpdate(true);
         }
 
         private void Update()
