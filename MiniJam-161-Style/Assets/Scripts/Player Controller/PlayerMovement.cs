@@ -9,9 +9,19 @@ public class PlayerMovement : MonoBehaviour
     public float dodgeDuration = 0.15f; // Duration of the dodge
     public float dodgeCooldown = 1.0f; // Cooldown time for the dodge
 
+    private Animator animator;
+    private const string horizontal = "Horizontal";
+    private const string vertical = "Vertical";
+
     private bool canDodge = true;
     private bool isDodging = false;
     private Vector3 dodgeDirection;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -19,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
         // Get input from WASD keys
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+
+        // set animation
+        animator.SetFloat(horizontal, moveHorizontal);
+        animator.SetFloat(vertical, moveVertical);
 
         // Calculate movement vector
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);

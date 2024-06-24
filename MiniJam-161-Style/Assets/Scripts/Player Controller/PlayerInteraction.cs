@@ -29,7 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("got out:", other);
+        Debug.Log("got out");
         IItem item = other.GetComponent<IItem>();
         if (item != null && item == nearbyItem)
         {
