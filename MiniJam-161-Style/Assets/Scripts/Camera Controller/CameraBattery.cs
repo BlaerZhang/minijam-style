@@ -46,7 +46,7 @@ namespace Camera_Controller
         {
             if (CurrentBatteryPercentage > 0)
             {
-                CurrentBatteryPercentage -= Time.deltaTime * batteryUsageSpeed;
+                CurrentBatteryPercentage -= Time.unscaledDeltaTime * batteryUsageSpeed;
             }
             else
             {

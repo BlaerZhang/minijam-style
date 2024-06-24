@@ -126,7 +126,7 @@ namespace Camera_Controller
                 }
             }
         }
-        
+
         private void StartBulletTime()
         {
             Time.timeScale = slowMotionTimeScale;
