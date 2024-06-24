@@ -34,6 +34,6 @@ public class NightCity : MonoBehaviour
     {
         print("turned off");
         if (isLightOn) isLightOn = false;
-        DOVirtual.DelayedCall(1, () => { isLightOn = true; }).Play();
+        DOVirtual.DelayedCall(1, () => isLightOn = true).Play().SetUpdate(false);
     }
 }
