@@ -1,25 +1,23 @@
-using System;
 using System.Collections;
 using Globals;
 using UnityEngine;
 
-namespace UIFunction
+namespace UI_Utils
 {
-    public class PhotoInspector : MonoBehaviour
+    public class AutoClose : MonoBehaviour
     {
         public float timeToInspect = 2f;
-
         private void OnEnable()
         {
-            StartCoroutine(CloseInspector());
+            StartCoroutine(AutoCloseInspector());
         }
 
-        private IEnumerator CloseInspector()
+        private IEnumerator AutoCloseInspector()
         {
             yield return new WaitForSecondsRealtime(timeToInspect);
             GameManager.Instance.ChangeState(GameManager.GameState.Playing);
 
-            // TODO: indicate save photo button
+            print($"{name} closed");
         }
     }
 }

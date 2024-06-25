@@ -23,6 +23,7 @@ namespace Camera_Controller
         public float slowMotionTimeScale = 0.4f;
 
         public static Action OnBatteryDead;
+        public static Action<Rect> OnPhotoCaptured;
 
         private RectTransform _rectTransform;
         private bool _isAiming = false;
@@ -149,6 +150,8 @@ namespace Camera_Controller
             Vector3 screenBottomLeft = corners[0];
             Vector3 screenTopRight = corners[2];
 
+            Rect captureRect = new Rect(screenBottomLeft, new Vector2(Mathf.Abs(screenTopRight.x - screenBottomLeft.x), Mathf.Abs(screenTopRight.y - screenBottomLeft.y)));
+
             // 将屏幕坐标转换为世界坐标
             Vector3 worldBottomLeft = Camera.main.ScreenToWorldPoint(screenBottomLeft);
             Vector3 worldTopRight = Camera.main.ScreenToWorldPoint(screenTopRight);
@@ -216,6 +219,9 @@ namespace Camera_Controller
                     collider2D.GetComponentInChildren<SpriteRenderer>().color = Color.red;
                 }
             }
+
+            print(captureRect);
+            OnPhotoCaptured?.Invoke(captureRect);
 
             DetectObjectives(fullyInsideTags, partlyInsideTags);
         }
