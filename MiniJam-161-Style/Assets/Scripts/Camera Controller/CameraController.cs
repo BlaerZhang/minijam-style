@@ -148,10 +148,9 @@ namespace Camera_Controller
 
             // 这些角点是屏幕空间的坐标，对于Overlay模式，它们相当于屏幕坐标
             Vector3 screenBottomLeft = corners[0];
-            Vector3 screenTopLeft = corners[1];
             Vector3 screenTopRight = corners[2];
 
-            Rect captureRect = new Rect(new Vector2(screenTopLeft.x,Screen.height - screenTopLeft.y), new Vector2(Mathf.Abs(screenTopRight.x - screenBottomLeft.x), Mathf.Abs(screenTopRight.y - screenBottomLeft.y)));
+            Rect captureRect = new Rect(new Vector2(screenBottomLeft.x,Screen.height - screenTopRight.y), new Vector2(Mathf.Abs(screenTopRight.x - screenBottomLeft.x), Mathf.Abs(screenTopRight.y - screenBottomLeft.y)));
 
             // 将屏幕坐标转换为世界坐标
             Vector3 worldBottomLeft = Camera.main.ScreenToWorldPoint(screenBottomLeft);
