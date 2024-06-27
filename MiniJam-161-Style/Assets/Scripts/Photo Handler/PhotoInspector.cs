@@ -16,6 +16,7 @@ namespace UIFunction
 
         [Header("Photo Save Settings")]
         public string photoFileName = "Photo";
+        public string photoFolderName = "Photoooooooooooos";
 
         private Texture2D _renderedTexture;
 
@@ -82,7 +83,20 @@ namespace UIFunction
             }
 
             string fileName = $"{photoFileName}_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png";
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+            string folderName = $"{photoFolderName}_";
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), folderName);
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+                Debug.Log("Created folder at: " + folderPath);
+            }
+            else
+            {
+                Debug.Log("Folder already exists at: " + folderPath);
+            }
+
+            string filePath = Path.Combine(folderPath, fileName);
 
             byte[] bytes = _renderedTexture.EncodeToPNG();
             File.WriteAllBytes(filePath, bytes);
