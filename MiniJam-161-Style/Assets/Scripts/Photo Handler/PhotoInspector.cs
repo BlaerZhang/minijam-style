@@ -13,6 +13,7 @@ namespace UIFunction
         [Header("Photo Display Settings")]
         public Camera screenshotCamera;
         public Image displayImage;
+        public Vector2Int renderTextureOffset = new Vector2Int(0, 25);
 
         [Header("Photo Save Settings")]
         public string photoFileName = "Photo";
@@ -53,7 +54,7 @@ namespace UIFunction
             yield return new WaitForEndOfFrame();
 
             // screen texture without selected layer
-            RenderTexture screenTexture = new RenderTexture(Screen.width, Screen.height, 16);
+            RenderTexture screenTexture = new RenderTexture(Screen.width + renderTextureOffset.x, Screen.height + renderTextureOffset.y, 16);
             screenshotCamera.targetTexture = screenTexture;
             RenderTexture.active = screenTexture;
             screenshotCamera.Render();
