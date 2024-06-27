@@ -42,6 +42,7 @@ namespace Camera_Controller
         void Start()
         {
             _rectTransform = GetComponent<RectTransform>();
+            Cursor.visible = false;
         }
 
         void Update()
@@ -49,7 +50,7 @@ namespace Camera_Controller
             if (!GameManager.Instance.allowInput) return;
 
             // follow mouse
-            transform.position = Input.mousePosition;
+            _rectTransform.anchoredPosition = RestrictCameraPosition(Input.mousePosition);
 
             // aim
             if (Input.GetMouseButtonDown(1))
@@ -82,6 +83,17 @@ namespace Camera_Controller
 
             // zoom
             ZoomInAndOut();
+        }
+
+        private Vector2 RestrictCameraPosition(Vector2 originalPosition)
+        {
+            float halfWidth = _rectTransform.sizeDelta.x / 2;
+            float halfHeight = _rectTransform.sizeDelta.y / 2;
+
+            float clampedX = Mathf.Clamp(originalPosition.x, halfWidth, Screen.width - halfWidth);
+            float clampedY = Mathf.Clamp(originalPosition.y, halfHeight, Screen.height - halfHeight);
+
+            return new Vector2(clampedX, clampedY);
         }
 
         private void StartAiming()
