@@ -11,6 +11,7 @@ namespace Camera_Controller
         [Header("Camera Frame Object")]
         public GameObject defaultFrameObject;
         public GameObject aimingFrameObject;
+        private GameObject _aimingCrosshair;
 
         [Header("Camera Frame Settings")]
         public float changeScaleDuration = 0.1f;
@@ -22,17 +23,20 @@ namespace Camera_Controller
         private void Start()
         {
             _aimingFrameRectTransform = aimingFrameObject.GetComponent<RectTransform>();
+            _aimingCrosshair = aimingFrameObject.transform.GetChild(0).gameObject;
         }
 
         public void ChangeToAimingFrameObject()
         {
             defaultFrameObject.SetActive(false);
             aimingFrameObject.SetActive(true);
+            _aimingCrosshair.SetActive(true);
         }
 
         public void ChangeToDefaultFrameObject()
         {
             defaultFrameObject.SetActive(true);
+            _aimingCrosshair.SetActive(false);
             UpdateSize(Vector2.zero);
         }
 

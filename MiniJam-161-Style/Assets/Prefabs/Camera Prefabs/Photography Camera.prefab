@@ -380,11 +380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4056036119565532911, guid: b6559250876b24e739372cd83abb4a78, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 240
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4056036119565532911, guid: b6559250876b24e739372cd83abb4a78, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 135
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4504175402702293616, guid: b6559250876b24e739372cd83abb4a78, type: 3}
       propertyPath: m_Pivot.x
