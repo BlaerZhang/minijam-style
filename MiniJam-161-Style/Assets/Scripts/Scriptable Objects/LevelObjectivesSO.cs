@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scriptable_Objects
 {
@@ -14,6 +15,6 @@ namespace Scriptable_Objects
             public List<string> failingObjectiveTags;
         }
 
-        public List<LevelObjective> LevelObjectives;
+        public List<LevelObjective> levelObjectives;
     }
 }
