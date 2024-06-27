@@ -9,7 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         // Check for interaction input 
-        if (Input.GetKeyDown(KeyCode.F) && nearbyItem is { InteractionType: IItem.InteractionTypes.press })
+        if (Input.GetKeyDown(KeyCode.F) && nearbyItem != null)
         {
             nearbyItem.Interact();
         }
@@ -28,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         if (nearbyItem == null) return; 
-        if (nearbyItem.InteractionType == IItem.InteractionTypes.collision) nearbyItem.Interact();
+        // if (nearbyItem.InteractionType == IItem.InteractionTypes.collision) nearbyItem.Interact();
     }
 
     void OnTriggerExit2D(Collider2D other)

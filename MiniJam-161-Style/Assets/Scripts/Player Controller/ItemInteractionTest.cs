@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ItemInteractionTest : MonoBehaviour, IItem
 {
-    public IItem.InteractionTypes interactionTypes;
-    public IItem.InteractionTypes InteractionType
-    {
-        get => interactionTypes;
-        set => interactionTypes = value;
-    }
+    // public IItem.InteractionTypes interactionTypes;
+    // public IItem.InteractionTypes InteractionType
+    // {
+    //     get => interactionTypes;
+    //     set => interactionTypes = value;
+    // }
     
     public void Interact()
     {

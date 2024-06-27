@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Goalkeeper : MonoBehaviour, IItem
 {
-    public IItem.InteractionTypes interactionTypes = IItem.InteractionTypes.collision;
-    public IItem.InteractionTypes InteractionType
-    {
-        get => interactionTypes;
-        set => interactionTypes = value;
-    }
+    // public IItem.InteractionTypes interactionTypes = IItem.InteractionTypes.collision;
+    // public IItem.InteractionTypes InteractionType
+    // {
+    //     get => interactionTypes;
+    //     set => interactionTypes = value;
+    // }
 
     private bool _isDefending = false;
 

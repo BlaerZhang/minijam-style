@@ -4,13 +4,13 @@ using UnityEngine;
 
 public interface IItem
 {
-    enum InteractionTypes
-    {
-        press,
-        collision
-    }
-
-    InteractionTypes InteractionType { get; set; }
+    // enum InteractionTypes
+    // {
+    //     press,
+    //     collision
+    // }
+    //
+    // InteractionTypes InteractionType { get; set; }
 
     void Interact();
 }

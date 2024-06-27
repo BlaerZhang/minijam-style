@@ -18,8 +18,8 @@ public class ItemInteracter : MonoBehaviour
             nearbyItem = item;
         }
 
-        if (nearbyItem == null) return; 
-        if (nearbyItem.InteractionType == IItem.InteractionTypes.collision) nearbyItem.Interact();
+        // if (nearbyItem == null) return; 
+        // if (nearbyItem.InteractionType == IItem.InteractionTypes.collision) nearbyItem.Interact();
     }
 
     void OnTriggerExit2D(Collider2D other)

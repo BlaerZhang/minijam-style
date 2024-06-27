@@ -6,12 +6,12 @@ using UnityEngine.Serialization;
 
 public class Forest : MonoBehaviour, IItem
 {
-    public IItem.InteractionTypes interactionTypes = IItem.InteractionTypes.collision;
-    public IItem.InteractionTypes InteractionType
-    {
-        get => interactionTypes;
-        set => interactionTypes = value;
-    }
+    // public IItem.InteractionTypes interactionTypes = IItem.InteractionTypes.collision;
+    // public IItem.InteractionTypes InteractionType
+    // {
+    //     get => interactionTypes;
+    //     set => interactionTypes = value;
+    // }
     
     private bool isInteractable = true;
     public GameObject bird;
