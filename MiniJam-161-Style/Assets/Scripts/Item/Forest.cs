@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Forest : MonoBehaviour, IItem
+public class Forest : MonoBehaviour, IItemAuto
 {
     // public IItem.InteractionTypes interactionTypes = IItem.InteractionTypes.collision;
     // public IItem.InteractionTypes InteractionType
@@ -15,7 +15,7 @@ public class Forest : MonoBehaviour, IItem
     
     private bool isInteractable = true;
     public GameObject bird;
-    public void Interact()
+    public void Interact(GameObject gameObject)
     {
         Instantiate(bird, transform.position, Quaternion.identity);
     }

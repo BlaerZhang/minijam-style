@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    // public string tag;
     private IItem nearbyItem;
+    private IItemAuto nearbyItemAuto;
 
     void Update()
     {
@@ -27,8 +29,14 @@ public class PlayerInteraction : MonoBehaviour
             nearbyItem = item;
         }
 
-        if (nearbyItem == null) return; 
-        // if (nearbyItem.InteractionType == IItem.InteractionTypes.collision) nearbyItem.Interact();
+        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
+        if (itemAuto != null && itemAuto != nearbyItemAuto)
+        {
+            nearbyItemAuto = itemAuto;
+            
+            //TODO: temp interact, to be optimized
+            nearbyItemAuto.Interact(this.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -39,6 +47,12 @@ public class PlayerInteraction : MonoBehaviour
         if (item != null && item == nearbyItem)
         {
             nearbyItem = null;
+        }
+        
+        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
+        if (itemAuto != null && itemAuto == nearbyItemAuto)
+        {
+            nearbyItemAuto = null;
         }
     }
 }

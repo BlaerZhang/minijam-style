@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemInteracter : MonoBehaviour
 {
     private IItem nearbyItem;
+    private IItemAuto nearbyItemAuto;
 
     //using collider to determine whether an object is interactable
     void OnTriggerEnter2D(Collider2D other)
