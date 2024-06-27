@@ -2,18 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteraction : MonoBehaviour
+public class ItemInteracter : MonoBehaviour
 {
     private IItem nearbyItem;
-
-    void Update()
-    {
-        // Check for interaction input 
-        if (Input.GetKeyDown(KeyCode.F) && nearbyItem is { InteractionType: IItem.InteractionTypes.press })
-        {
-            nearbyItem.Interact();
-        }
-    }
 
     //using collider to determine whether an object is interactable
     void OnTriggerEnter2D(Collider2D other)

@@ -11,6 +11,7 @@ TagManager:
   - Monster
   - NightCityLightOn
   - NightCityLightOff
+  - Goalkeeper
   layers:
   - Default
   - TransparentFX
