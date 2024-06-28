@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IItem
+public interface IItemAuto
 {
     // enum InteractionTypes
     // {
@@ -12,5 +12,5 @@ public interface IItem
     //
     // InteractionTypes InteractionType { get; set; }
 
-    void Interact();
+    void Interact(GameObject interactorGameObject);
 }

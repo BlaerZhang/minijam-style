@@ -13,9 +13,11 @@ namespace UIFunction
         [Header("Photo Display Settings")]
         public Camera screenshotCamera;
         public Image displayImage;
+        public Vector2Int renderTextureOffset = new Vector2Int(0, 25);
 
         [Header("Photo Save Settings")]
         public string photoFileName = "Photo";
+        public string photoFolderName = "Photoooooooooooos";
 
         private Texture2D _renderedTexture;
 
@@ -52,7 +54,7 @@ namespace UIFunction
             yield return new WaitForEndOfFrame();
 
             // screen texture without selected layer
-            RenderTexture screenTexture = new RenderTexture(Screen.width, Screen.height, 16);
+            RenderTexture screenTexture = new RenderTexture(Screen.width + renderTextureOffset.x, Screen.height + renderTextureOffset.y, 16);
             screenshotCamera.targetTexture = screenTexture;
             RenderTexture.active = screenTexture;
             screenshotCamera.Render();
@@ -82,7 +84,20 @@ namespace UIFunction
             }
 
             string fileName = $"{photoFileName}_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png";
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+            string folderName = $"{photoFolderName}_";
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), folderName);
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+                Debug.Log("Created folder at: " + folderPath);
+            }
+            else
+            {
+                Debug.Log("Folder already exists at: " + folderPath);
+            }
+
+            string filePath = Path.Combine(folderPath, fileName);
 
             byte[] bytes = _renderedTexture.EncodeToPNG();
             File.WriteAllBytes(filePath, bytes);

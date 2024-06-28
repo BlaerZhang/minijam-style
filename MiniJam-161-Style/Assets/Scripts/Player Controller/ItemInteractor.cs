@@ -2,20 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteraction : MonoBehaviour
+public class ItemInteracter : MonoBehaviour
 {
-    // public string tag;
     private IItem nearbyItem;
     private IItemAuto nearbyItemAuto;
-
-    void Update()
-    {
-        // Check for interaction input 
-        if (Input.GetKeyDown(KeyCode.F) && nearbyItem != null)
-        {
-            nearbyItem.Interact();
-        }
-    }
 
     //using collider to determine whether an object is interactable
     void OnTriggerEnter2D(Collider2D other)
@@ -29,14 +19,8 @@ public class PlayerInteraction : MonoBehaviour
             nearbyItem = item;
         }
 
-        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
-        if (itemAuto != null && itemAuto != nearbyItemAuto)
-        {
-            nearbyItemAuto = itemAuto;
-            
-            //TODO: temp interact, to be optimized
-            nearbyItemAuto.Interact(this.gameObject);
-        }
+        // if (nearbyItem == null) return; 
+        // if (nearbyItem.InteractionType == IItem.InteractionTypes.collision) nearbyItem.Interact();
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -47,12 +31,6 @@ public class PlayerInteraction : MonoBehaviour
         if (item != null && item == nearbyItem)
         {
             nearbyItem = null;
-        }
-        
-        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
-        if (itemAuto != null && itemAuto == nearbyItemAuto)
-        {
-            nearbyItemAuto = null;
         }
     }
 }
