@@ -17,6 +17,7 @@ TagManager:
   - Couple
   - Kid
   - Firework
+  - Cow
   layers:
   - Default
   - TransparentFX
