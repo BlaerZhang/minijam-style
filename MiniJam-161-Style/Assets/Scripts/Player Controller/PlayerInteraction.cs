@@ -8,7 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     private IItem nearbyItem;
     private IItemAuto nearbyItemAuto;
 
-    void Update()
+    protected virtual void Update()
     {
         // Check for interaction input 
         if (Input.GetKeyDown(KeyCode.F) && nearbyItem != null)
