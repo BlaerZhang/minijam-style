@@ -19,6 +19,9 @@ namespace Camera_Controller
         public Vector2 cameraXLimits;
         public Vector2 defaultCameraFrameSize = new Vector2(300, 200);
 
+        [Header("Camera Scaling Setting")]
+        private Vector2 referenceResolution;
+
         [Header("Slow Motion Settings")]
         public float slowMotionTimeScale = 0.4f;
 
@@ -26,6 +29,7 @@ namespace Camera_Controller
         public static Action<Rect> OnPhotoCaptured;
 
         private RectTransform _rectTransform;
+        private RectTransform _parentRect;
         private bool _isAiming = false;
         private Vector2 _currentFrameSize;
 
@@ -42,6 +46,8 @@ namespace Camera_Controller
         void Start()
         {
             _rectTransform = GetComponent<RectTransform>();
+            _parentRect = transform.parent.GetComponent<RectTransform>();
+            referenceResolution = _parentRect.parent.GetComponent<CanvasScaler>().referenceResolution;
             Cursor.visible = false;
         }
 
@@ -50,7 +56,8 @@ namespace Camera_Controller
             if (!GameManager.Instance.allowInput) return;
 
             // follow mouse
-            _rectTransform.anchoredPosition = RestrictCameraPosition(Input.mousePosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_parentRect, RestrictCameraPosition(Input.mousePosition), null, out var localPoint);
+            _rectTransform.anchoredPosition = localPoint;
 
             // aim
             if (Input.GetMouseButtonDown(1))
@@ -87,8 +94,10 @@ namespace Camera_Controller
 
         private Vector2 RestrictCameraPosition(Vector2 originalPosition)
         {
-            float halfWidth = _rectTransform.sizeDelta.x / 2;
-            float halfHeight = _rectTransform.sizeDelta.y / 2;
+            float scaleFactor = Screen.width / referenceResolution.x;
+
+            float halfWidth = (_rectTransform.sizeDelta.x / 2) * scaleFactor;
+            float halfHeight = (_rectTransform.sizeDelta.y / 2) * scaleFactor;
 
             float clampedX = Mathf.Clamp(originalPosition.x, halfWidth, Screen.width - halfWidth);
             float clampedY = Mathf.Clamp(originalPosition.y, halfHeight, Screen.height - halfHeight);
