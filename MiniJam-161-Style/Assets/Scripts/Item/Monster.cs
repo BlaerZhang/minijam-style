@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour, IItem
 {
+    // public IItem.InteractionTypes interactionTypes = IItem.InteractionTypes.press;
+    // public IItem.InteractionTypes InteractionType
+    // {
+    //     get => interactionTypes;
+    //     set => interactionTypes = value;
+    // }
+    
     private bool isInteractable = true;
     public NightCity nightCity;
     public float stunDuration = 1f;

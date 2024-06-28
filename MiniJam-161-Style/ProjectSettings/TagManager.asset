@@ -11,6 +11,9 @@ TagManager:
   - Monster
   - NightCityLightOn
   - NightCityLightOff
+  - Goalkeeper
+  - Dog
+  - Collider
   layers:
   - Default
   - TransparentFX

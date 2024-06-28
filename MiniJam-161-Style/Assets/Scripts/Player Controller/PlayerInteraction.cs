@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    // public string tag;
     private IItem nearbyItem;
+    private IItemAuto nearbyItemAuto;
 
-    void Update()
+    protected virtual void Update()
     {
         // Check for interaction input 
         if (Input.GetKeyDown(KeyCode.F) && nearbyItem != null)
@@ -26,6 +28,15 @@ public class PlayerInteraction : MonoBehaviour
         {
             nearbyItem = item;
         }
+
+        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
+        if (itemAuto != null && itemAuto != nearbyItemAuto)
+        {
+            nearbyItemAuto = itemAuto;
+            
+            //TODO: temp interact, to be optimized
+            nearbyItemAuto.Interact(this.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -36,6 +47,12 @@ public class PlayerInteraction : MonoBehaviour
         if (item != null && item == nearbyItem)
         {
             nearbyItem = null;
+        }
+        
+        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
+        if (itemAuto != null && itemAuto == nearbyItemAuto)
+        {
+            nearbyItemAuto = null;
         }
     }
 }
