@@ -13,8 +13,6 @@ public class Couple : MonoBehaviour
     [Header("Romantic Banner Settings")]
     public SpriteRenderer romanticBanner;
     public float fadeDuration = 1f;
-    public float floatDistance = 0.1f;
-    public float floatDuration = 1f;
 
     private CircleCollider2D _collider2D;
 
@@ -28,8 +26,6 @@ public class Couple : MonoBehaviour
     {
         _collider2D = GetComponent<CircleCollider2D>();
         _collider2D.radius = detectionRadius;
-
-        RomanticBannerFloating();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -63,8 +59,8 @@ public class Couple : MonoBehaviour
             // Debug.Log("Detected object: " + col.name);
         }
 
-        if (!isKidAround & isFireworkAround & isRainingOrRainbow)
-        // if (!isKidAround & isFireworkAround)
+        // if (!isKidAround & isFireworkAround & isRainingOrRainbow)
+        if (!isKidAround & isFireworkAround)
         {
             if (!isRomantic)
             {
@@ -90,27 +86,7 @@ public class Couple : MonoBehaviour
 
     private void HideRomanticBanner()
     {
-        romanticBanner.DOFade(0, fadeDuration).OnComplete(() => { romanticBanner.gameObject.SetActive(false); });
-    }
-
-    void RomanticBannerFloating()
-    {
-        Vector3 initialPosition = romanticBanner.transform.position;
-
-        romanticBanner.transform.DOMoveY(initialPosition.y + floatDistance, floatDuration)
-            .SetEase(Ease.InOutSine)
-            .SetLoops(-1, LoopType.Yoyo)
-            .OnUpdate(() =>
-            {
-                if (romanticBanner.transform.position.y > initialPosition.y + floatDistance)
-                {
-                    romanticBanner.transform.position = new Vector3(romanticBanner.transform.position.x, initialPosition.y + floatDistance, romanticBanner.transform.position.z);
-                }
-                else if (romanticBanner.transform.position.y < initialPosition.y)
-                {
-                    romanticBanner.transform.position = new Vector3(romanticBanner.transform.position.x, initialPosition.y, romanticBanner.transform.position.z);
-                }
-            });
+        romanticBanner.DOFade(0, 0.1f).OnComplete(() => { romanticBanner.gameObject.SetActive(false); });
     }
 
     private void OnDrawGizmos()

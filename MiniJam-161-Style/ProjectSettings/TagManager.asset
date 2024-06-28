@@ -18,6 +18,7 @@ TagManager:
   - Kid
   - Firework
   - Cow
+  - Band
   layers:
   - Default
   - TransparentFX
