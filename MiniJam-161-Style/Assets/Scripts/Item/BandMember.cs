@@ -7,6 +7,7 @@ namespace Item
     public class BandMember : MonoBehaviour, IItemAuto
     {
         public Sprite playingSprite;
+        public GameObject playingVfx;
 
         [HideInInspector] public bool isPlaying = false;
         private SpriteRenderer _spriteRenderer;
@@ -20,6 +21,7 @@ namespace Item
         {
             print("touched member");
             _spriteRenderer.sprite = playingSprite;
+            playingVfx.SetActive(true);
             isPlaying = true;
         }
     }
