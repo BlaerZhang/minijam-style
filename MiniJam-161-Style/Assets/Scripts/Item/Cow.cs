@@ -8,7 +8,7 @@ public class Cow : MonoBehaviour, IItem
     [Header("Follow Settings")]
     public Transform playerTransform;
     public float followSpeed = 10f;
-    public float followDistance;
+    public float followDistance = 1f;
 
     private bool isFollowing = false;
 

@@ -19,6 +19,7 @@ TagManager:
   - Firework
   - Cow
   - Band
+  - UFO
   layers:
   - Default
   - TransparentFX

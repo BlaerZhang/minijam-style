@@ -2998,7 +2998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1033508579
 Transform:
   m_ObjectHideFlags: 0
@@ -7298,6 +7298,11 @@ Transform:
   - {fileID: 1990813059}
   m_Father: {fileID: 1681145119}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2113766732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5701635870728854219, guid: 91acbdde1d44d45e4b01b94082c2c06d, type: 3}
+  m_PrefabInstance: {fileID: 4436375825140916555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2769699280564603596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7367,17 +7372,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: UFO
       objectReference: {fileID: 0}
-    - target: {fileID: 1672003437164171536, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1884326730027098253, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: 1884326730027098253, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.76
+      value: 1.76
       objectReference: {fileID: 0}
     - target: {fileID: 1884326730027098253, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7411,6 +7412,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7444765980156541849, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
+      propertyPath: objectToFollow
+      value: 
+      objectReference: {fileID: 2113766732}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7483,11 +7488,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5701635870728854219, guid: 91acbdde1d44d45e4b01b94082c2c06d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.821
+      value: -3.85
       objectReference: {fileID: 0}
     - target: {fileID: 5701635870728854219, guid: 91acbdde1d44d45e4b01b94082c2c06d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.831
+      value: 0.48000002
       objectReference: {fileID: 0}
     - target: {fileID: 5701635870728854219, guid: 91acbdde1d44d45e4b01b94082c2c06d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7528,10 +7533,6 @@ PrefabInstance:
     - target: {fileID: 8296263784992339939, guid: 91acbdde1d44d45e4b01b94082c2c06d, type: 3}
       propertyPath: m_Name
       value: Cow
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296263784992339939, guid: 91acbdde1d44d45e4b01b94082c2c06d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
