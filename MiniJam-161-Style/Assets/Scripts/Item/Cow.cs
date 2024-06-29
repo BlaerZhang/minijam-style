@@ -17,17 +17,17 @@ public class Cow : MonoBehaviour, IItem
         if (isFollowing)
         {
             FollowPlayer();
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                isFollowing = false;
-            }
+            // if (Input.GetKeyDown(KeyCode.F))
+            // {
+            //     isFollowing = false;
+            // }
         }
 
     }
 
     public void Interact()
     {
-        isFollowing = true;
+        isFollowing = !isFollowing;
     }
 
     private void FollowPlayer()
