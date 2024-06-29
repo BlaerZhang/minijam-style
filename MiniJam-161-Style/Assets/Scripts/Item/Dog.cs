@@ -9,20 +9,26 @@ public class Dog : MonoBehaviour, IItem
     public float idleSpeed = 2;
     public float rollingSpeed = 4;
     public Vector2 respawnPos;
+    public float bouncingBackInitialInvincibleTime = 0.5f;
+    public float outOfScreenOffset = 0.5f;
     
     private Vector2 startPos;
     private Transform player;
     private Vector2 currentRollingDir;
-    
-    
+    private float _invincibleTimer = 0f;
+    private Vector2 _currentSpeed;
+    private Vector2 lastPos;
+
     private bool _isRolling = false;
     private bool _isBouncingBack = false;
-    
+    private bool _isOut = false;
+
     public void Interact()
     {
         if (_isRolling) return;
         transform.DOKill();
         currentRollingDir = (transform.position - player.position).normalized;
+        _invincibleTimer = bouncingBackInitialInvincibleTime;
         _isRolling = true;
     }
 
@@ -39,6 +45,7 @@ public class Dog : MonoBehaviour, IItem
     void Start()
     {
         startPos = transform.position;
+        lastPos = startPos;
         player = FindObjectOfType<PlayerMovement>().transform;
         Patrol();
     }
@@ -48,10 +55,17 @@ public class Dog : MonoBehaviour, IItem
         Roll();
     }
 
+    private void FixedUpdate()
+    {
+        _currentSpeed = ((Vector2)transform.position - lastPos) / Time.deltaTime;
+        lastPos = transform.position;
+    }
+
     void Roll()
     {
         if (_isRolling)
         {
+            //bouncing back
             if (_isBouncingBack)
             {
                 currentRollingDir = ((Vector3)startPos - transform.position).normalized;
@@ -59,6 +73,7 @@ public class Dog : MonoBehaviour, IItem
                 {
                     _isBouncingBack = false;
                     _isRolling = false;
+                    _isOut = false;
                     Patrol();
                 }
             }
@@ -66,13 +81,22 @@ public class Dog : MonoBehaviour, IItem
             transform.position += (Vector3)currentRollingDir * rollingSpeed * Time.deltaTime;
             
             //respawn if out
-            Vector2 posOnScreen = Camera.main.WorldToScreenPoint(transform.position);
-            if (posOnScreen.x <= 0 || posOnScreen.x >= Screen.width || posOnScreen.y <= 0 ||
-                posOnScreen.y >= Screen.height) Respawn();
+            if (!_isOut)
+            {
+                Vector2 posOnScreen = Camera.main.WorldToScreenPoint(transform.position);
+                if (posOnScreen.x <= 0 - outOfScreenOffset ||
+                    posOnScreen.x >= Screen.width + outOfScreenOffset ||
+                    posOnScreen.y <= 0 - outOfScreenOffset ||
+                    posOnScreen.y >= Screen.height + outOfScreenOffset) Respawn();
+            }
+           
             
             //detect any collision
             if (!_isBouncingBack)
             {
+                _invincibleTimer -= Time.deltaTime;
+                if (_invincibleTimer >= 0) return;
+                
                 Collider2D[] collisionResult = new Collider2D[1];
                 if (Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(1, 0.2f), 0, collisionResult) >= 1)
                 {
@@ -84,7 +108,15 @@ public class Dog : MonoBehaviour, IItem
 
     void Patrol()
     {
-        transform.DOMove(startPos + Vector2.right * 1, 1 / idleSpeed).SetLoops(-1, LoopType.Yoyo);
+        Sequence patrolSequence = DOTween.Sequence();
+        patrolSequence
+            .Append(transform.DOMoveY(startPos.y + 0.5f, 1f / idleSpeed))
+            .Append(transform.DOMoveY(startPos.y, 1f / idleSpeed))
+            .Append(transform.DOMoveY(startPos.y - 0.5f, 1f / idleSpeed))
+            .Append(transform.DOMoveY(startPos.y, 1f / idleSpeed)).SetEase(Ease.Linear).SetTarget(transform);
+
+        patrolSequence.SetLoops(-1, LoopType.Restart).Play();
+        transform.DOMoveX(startPos.x + 2, 2 / idleSpeed).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
     
     void OnGoal()
@@ -98,21 +130,14 @@ public class Dog : MonoBehaviour, IItem
 
     void ResetIdle()
     {
-        transform.DOMove(startPos, ((Vector2)transform.position - startPos).magnitude / idleSpeed).OnComplete(() =>
-        {
-            Patrol();
-        });
+        transform.DOMove(startPos, ((Vector2)transform.position - startPos).magnitude / idleSpeed).OnComplete(Patrol);
     }
 
     void Respawn()
     {
+        _isOut = true;
         transform.position = respawnPos;
-        transform.DOMove(startPos, ((Vector2)transform.position - startPos).magnitude / rollingSpeed)
-            .OnComplete(() =>
-            {
-                _isRolling = false;
-                Patrol();
-            });
+        _isBouncingBack = true;
     }
 
     // private void OnCollisionEnter2D(Collision2D other)
