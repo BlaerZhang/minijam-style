@@ -21,7 +21,7 @@ public class PlayerInteraction : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Interactable")) return;
-        Debug.Log("got in");
+        //Debug.Log("got in: " + other.name);
         
         IItem item = other.GetComponent<IItem>();
         if (item != null)
@@ -32,6 +32,7 @@ public class PlayerInteraction : MonoBehaviour
         IItemAuto itemAuto = other.GetComponent<IItemAuto>();
         if (itemAuto != null && itemAuto != nearbyItemAuto)
         {
+            //Debug.Log("Trigger success");
             nearbyItemAuto = itemAuto;
             
             //TODO: temp interact, to be optimized
@@ -42,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag("Interactable")) return;
-        Debug.Log("got out:" + other.name);
+        //Debug.Log("got out:" + other.name);
         IItem item = other.GetComponent<IItem>();
         if (item != null && item == nearbyItem)
         {

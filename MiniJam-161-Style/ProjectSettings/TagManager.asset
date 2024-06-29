@@ -14,6 +14,13 @@ TagManager:
   - Goalkeeper
   - Dog
   - Collider
+  - Elephant
+  - Nose
+  - Baseball
+  - Fireworker
+  - FireworkerInteract
+  - Firework
+  - Kid
   layers:
   - Default
   - TransparentFX
