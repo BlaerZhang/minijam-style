@@ -12,6 +12,14 @@ TagManager:
   - NightCityLightOn
   - NightCityLightOff
   - Goalkeeper
+  - Dog
+  - Collider
+  - Couple
+  - Kid
+  - Firework
+  - Cow
+  - Band
+  - UFO
   layers:
   - Default
   - TransparentFX

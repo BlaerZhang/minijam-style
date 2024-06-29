@@ -9,7 +9,7 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponentInChildren<SpriteRenderer>().gameObject.CompareTag("Dog"))
+        if (other.GetComponent<ItemInteractor>())
         {
             OnGoal?.Invoke();
         }
