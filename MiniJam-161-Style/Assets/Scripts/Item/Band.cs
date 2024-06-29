@@ -8,6 +8,7 @@ public class Band : MonoBehaviour
 {
     [Header("Band Member")]
     public List<BandMember> bandMembers = new();
+    private bool _isWholePlaying = false;
 
     [Header("Banner Settings")]
     // show after all band members are playing
@@ -30,11 +31,13 @@ public class Band : MonoBehaviour
         if (playingMemberCount == bandMembers.Count)
         {
             ShowBanner();
+            _isWholePlaying = true;
         }
     }
 
     private void ShowBanner()
     {
+        if (_isWholePlaying) return;
         print("show banner");
         banner.gameObject.SetActive(true);
         banner.DOFade(1, fadeDuration);
