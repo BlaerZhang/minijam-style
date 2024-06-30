@@ -13,23 +13,32 @@ MonoBehaviour:
   m_Name: LevelObjectivesSO
   m_EditorClassIdentifier: 
   levelObjectives:
-  - levelName: <b>one of a name</b>
-    description: this is a <i>description</i>
+  - levelName: '<i>Flight over a slumbering city</i> :'
+    description: Take a photo with <color=#b51c1c>[bird]</color> and <color=#b51c1c>[light-off
+      city]</color>.
     winningObjectiveTags:
     - Player
     - NightCityLightOff
     - Bird
     failingObjectiveTags:
     - Monster
-  - levelName: another name
-    description: another description
+  - levelName: '<i>Tree House, kids and Godzilla</i> :'
+    description: Take a photo with <color=#b51c1c>[tree house]</color>, <color=#b51c1c>[kids]</color>
+      and <color=#b51c1c>[godzilla]</color>.
+    winningObjectiveTags:
+    - 
+    failingObjectiveTags: []
+  - levelName: '<i>A romantic night without kids</i> :'
+    description: Take a photo with <color=#b51c1c>[couples in romantic mood]</color>,<color=#b51c1c>[firework]</color>,
+      avoid <color=#b51c1c>[kids]</color> in the photo.
     winningObjectiveTags: []
     failingObjectiveTags: []
-  - levelName: another name
-    description: another description
+  - levelName: '<i>Full swing performance</i> :'
+    description: Take a photo with <color=#b51c1c>[the band]</color> performing as
+      a trio.
     winningObjectiveTags: []
     failingObjectiveTags: []
-  - levelName: another name
-    description: another description
+  - levelName: '<i>Failed goalkeeping</i> :'
+    description: Take a photo with <color=#b51c1c>[frustrated goalkeeper]</color>.
     winningObjectiveTags: []
     failingObjectiveTags: []
