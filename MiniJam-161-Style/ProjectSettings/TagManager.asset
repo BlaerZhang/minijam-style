@@ -29,6 +29,7 @@ TagManager:
   - Rainbow
   - TreehouseWithKids
   - TreehouseWithoutKids
+  - Romantic
   layers:
   - Default
   - TransparentFX

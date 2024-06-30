@@ -27,12 +27,15 @@ MonoBehaviour:
       and <color=#b51c1c>[godzilla]</color>.
     winningObjectiveTags:
     - Player
+    - TreehouseWithKids
+    - Monster
     failingObjectiveTags: []
   - levelName: '<i>Full swing performance</i> :'
     description: Take a photo with <color=#b51c1c>[the band]</color> performing as
       a trio.
     winningObjectiveTags:
     - Player
+    - Band
     failingObjectiveTags: []
   - levelName: '<i>Failed goalkeeping</i> :'
     description: Take a photo with <color=#b51c1c>[frustrated goalkeeper]</color>.
@@ -42,6 +45,9 @@ MonoBehaviour:
   - levelName: '<i>A romantic night without kids</i> :'
     description: Take a photo with <color=#b51c1c>[couples in romantic mood]</color>,<color=#b51c1c>[firework]</color>,
       avoid <color=#b51c1c>[kids]</color> in the photo.
-    winningObjectiveTags: []
+    winningObjectiveTags:
+    - Player
+    - Romantic
+    - Firework
     failingObjectiveTags:
     - Kid
