@@ -4,25 +4,30 @@ using UnityEngine.Serialization;
 
 namespace Item
 {
-    public class BandMember : MonoBehaviour, IItemAuto
+    public class BandMember : MonoBehaviour
     {
         public Sprite playingSprite;
         public GameObject playingVfx;
 
-        [HideInInspector] public bool isPlaying = false;
         private SpriteRenderer _spriteRenderer;
+        private Sprite _originalSprite;
 
         private void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _originalSprite = _spriteRenderer.sprite;
         }
 
-        public void Interact(GameObject interactorGameObject)
+        public void StartPlaying()
         {
-            print("touched member");
             _spriteRenderer.sprite = playingSprite;
             playingVfx.SetActive(true);
-            isPlaying = true;
+        }
+
+        public void StopPlaying()
+        {
+            _spriteRenderer.sprite = _originalSprite;
+            playingVfx.SetActive(false);
         }
     }
 }

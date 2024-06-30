@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,40 +7,66 @@ using UnityEngine;
 
 public class Band : MonoBehaviour
 {
+    [Header("Trigger Settings")]
+    public int humanoidInRangeTriggerCount = 3;
+    public List<string> humanoidTags;
+
     [Header("Band Member")]
     public List<BandMember> bandMembers = new();
-    private bool _isWholePlaying = false;
 
     [Header("Banner Settings")]
     // show after all band members are playing
     public SpriteRenderer banner;
-    public float fadeDuration = 1f;
+    public float fadeDuration = 2f;
 
-    void Update()
+    private int _currentHumanoidInRange = 0;
+    private bool _hasBannerShown = false;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        CheckIfWholeBandPlaying();
+        if (_currentHumanoidInRange == humanoidInRangeTriggerCount) return;
+
+        print(other.tag);
+        if (humanoidTags.Contains(other.tag))
+        {
+            bandMembers[_currentHumanoidInRange].StartPlaying();
+            _currentHumanoidInRange++;
+
+            if (_currentHumanoidInRange == humanoidInRangeTriggerCount)
+            {
+                ShowBanner();
+            }
+        }
     }
 
-    private void CheckIfWholeBandPlaying()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        int playingMemberCount = 0;
-        foreach (var member in bandMembers)
-        {
-            if (member.isPlaying) playingMemberCount++;
-        }
+        if (_currentHumanoidInRange == 0) return;
 
-        if (playingMemberCount == bandMembers.Count)
+        if (humanoidTags.Contains(other.tag))
         {
-            ShowBanner();
-            _isWholePlaying = true;
+            _currentHumanoidInRange--;
+            bandMembers[_currentHumanoidInRange].StopPlaying();
+
+            if (_currentHumanoidInRange == humanoidInRangeTriggerCount - 1)
+            {
+                HideBanner();
+            }
         }
     }
 
     private void ShowBanner()
     {
-        if (_isWholePlaying) return;
-        print("show banner");
         banner.gameObject.SetActive(true);
         banner.DOFade(1, fadeDuration);
+    }
+
+    private void HideBanner()
+    {
+        banner.DOFade(0, fadeDuration / 4)
+            .OnComplete(() =>
+            {
+                banner.gameObject.SetActive(false);
+            });
     }
 }
