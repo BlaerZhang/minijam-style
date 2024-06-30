@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Camera_Controller;
 using Scriptable_Objects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,7 @@ namespace Globals
     /// </summary>
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField] private LevelObjectivesSO levelObjectivesSO;
+        public LevelObjectivesSO levelObjectivesSO;
 
         [HideInInspector] public LevelObjectivesSO.LevelObjective currentLevelObjective;
 

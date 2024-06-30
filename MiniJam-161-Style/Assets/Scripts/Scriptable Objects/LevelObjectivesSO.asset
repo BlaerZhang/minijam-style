@@ -13,11 +13,23 @@ MonoBehaviour:
   m_Name: LevelObjectivesSO
   m_EditorClassIdentifier: 
   levelObjectives:
-  - winningObjectiveTags:
+  - levelName: <b>one of a name</b>
+    description: this is a <i>description</i>
+    winningObjectiveTags:
     - Player
     - NightCityLightOff
     - Bird
     failingObjectiveTags:
     - Monster
-  - winningObjectiveTags: []
+  - levelName: another name
+    description: another description
+    winningObjectiveTags: []
+    failingObjectiveTags: []
+  - levelName: another name
+    description: another description
+    winningObjectiveTags: []
+    failingObjectiveTags: []
+  - levelName: another name
+    description: another description
+    winningObjectiveTags: []
     failingObjectiveTags: []

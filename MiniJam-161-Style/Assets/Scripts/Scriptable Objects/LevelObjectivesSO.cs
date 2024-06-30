@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Scriptable_Objects
 {
@@ -11,6 +11,8 @@ namespace Scriptable_Objects
         [Serializable]
         public struct LevelObjective
         {
+            public string levelName;
+            public string description;
             public List<string> winningObjectiveTags;
             public List<string> failingObjectiveTags;
         }
