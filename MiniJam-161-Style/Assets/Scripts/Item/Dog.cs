@@ -104,7 +104,7 @@ public class Dog : MonoBehaviour, IItem
                 if (_invincibleTimer >= 0) return;
                 
                 Collider2D[] collisionResult = new Collider2D[1];
-                if (Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(1, 0.2f), 0, collisionResult) >= 1)
+                if (Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(1, 0.2f), 0, collisionResult, LayerMask.GetMask("Collider")) >= 1)
                 {
                     if(!collisionResult[0].isTrigger) _isBouncingBack = true;
                 }

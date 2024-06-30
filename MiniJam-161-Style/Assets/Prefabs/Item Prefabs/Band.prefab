@@ -170,7 +170,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &1891069955555336126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +470,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &6520352500658529665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +655,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &1822936605330291889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1221,6 +1221,7 @@ MonoBehaviour:
   - Kid
   - Goalkeeper
   - Couple
+  - Fireworker
   bandMembers:
   - {fileID: 6520352500658529665}
   - {fileID: 1822936605330291889}

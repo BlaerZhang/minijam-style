@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float dodgeCooldown = 1.0f; // Cooldown time for the dodge
 
     private Animator animator;
+    private Rigidbody2D _rigidbody2D;
     private const string horizontal = "Horizontal";
     private const string vertical = "Vertical";
 
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
 
@@ -40,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
         if (!isDodging)
         {
             // Move the player
-            transform.Translate(movement * speed * Time.deltaTime, Space.World);
+            // transform.Translate(movement * speed * Time.deltaTime, Space.World);
+            _rigidbody2D.MovePosition(transform.position + movement * speed * Time.fixedDeltaTime);
 
             // Check for dodge input
             if (Input.GetKeyDown(KeyCode.LeftShift) && canDodge && movement.magnitude > 0)
@@ -60,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
         while (elapsedTime < dodgeDuration)
         {
-            transform.Translate(dodgeDirection * dodgeSpeed * Time.deltaTime, Space.World);
+            // transform.Translate(dodgeDirection * dodgeSpeed * Time.deltaTime, Space.World);
+            _rigidbody2D.MovePosition(transform.position + dodgeDirection * dodgeSpeed * Time.fixedDeltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

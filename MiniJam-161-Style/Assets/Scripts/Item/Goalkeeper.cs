@@ -26,7 +26,7 @@ public class Goalkeeper : MonoBehaviour, IItemAuto
         _isDefending = true;
         
         if(_defendingTarget != null)
-            if (_defendingTarget.tag == "Player")
+            if (_defendingTarget.GetComponent<PlayerMovement>() != null)
                 return;
         _defendingTarget = gameObject;
     }
