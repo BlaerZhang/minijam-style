@@ -14,12 +14,17 @@ TagManager:
   - Goalkeeper
   - Dog
   - Collider
-  - Couple
-  - Kid
+  - Elephant
+  - Nose
+  - Baseball
+  - Fireworker
+  - FireworkerInteract
   - Firework
+  - Kid
+  - UFO
+  - CoupleCar
   - Cow
   - Band
-  - UFO
   layers:
   - Default
   - TransparentFX

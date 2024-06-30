@@ -18,6 +18,7 @@ public class Dog : MonoBehaviour, IItem
     private float _invincibleTimer = 0f;
     private Vector2 _currentSpeed;
     private Vector2 lastPos;
+    private Animator _animator;
 
     private bool _isRolling = false;
     private bool _isBouncingBack = false;
@@ -47,12 +48,17 @@ public class Dog : MonoBehaviour, IItem
         startPos = transform.position;
         lastPos = startPos;
         player = FindObjectOfType<PlayerMovement>().transform;
+        _animator = GetComponent<Animator>();
         Patrol();
     }
     
     void Update()
     {
         Roll();
+        
+        //animator set
+        _animator.SetBool("isRolling", _isRolling);
+        _animator.SetFloat("speedX", _currentSpeed.x);
     }
 
     private void FixedUpdate()
