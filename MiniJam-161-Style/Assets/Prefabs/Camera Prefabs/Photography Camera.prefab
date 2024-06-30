@@ -180,7 +180,7 @@ MonoBehaviour:
   cameraFrameController: {fileID: 5444140276895126127}
   cameraBattery: {fileID: 5663370302432378160}
   zoomDelta: 100
-  cameraXLimits: {x: 100, y: 1920}
+  cameraXLimits: {x: 100, y: 945}
   defaultCameraFrameSize: {x: 300, y: 200}
   slowMotionTimeScale: 0.1
 --- !u!1 &7348966725571014018
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3276393196023182095}
   - component: {fileID: 3619361154888452467}
   - component: {fileID: 5444140276895126127}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Camera Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
