@@ -19,8 +19,7 @@ MonoBehaviour:
     - Player
     - NightCityLightOff
     - Bird
-    failingObjectiveTags:
-    - Monster
+    failingObjectiveTags: []
   - levelName: another name
     description: another description
     winningObjectiveTags: []

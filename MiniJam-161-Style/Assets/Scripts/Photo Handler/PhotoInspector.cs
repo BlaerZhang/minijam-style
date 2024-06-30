@@ -71,7 +71,7 @@ namespace UIFunction
             displayImage.sprite = screenshotSprite;
 
             yield return new WaitForEndOfFrame();
-            print("photo captured");
+            // print("photo captured");
         }
 
         private void SavePhoto()

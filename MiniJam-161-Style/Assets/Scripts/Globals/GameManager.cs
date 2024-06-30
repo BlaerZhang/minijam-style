@@ -66,13 +66,13 @@ namespace Globals
                     break;
                 case GameState.LevelCompleted:
                     PauseGame();
-                    uiManager.ShowPhotoInspector();
+                    uiManager.ShowPhotoInspector(true);
                     levelManager.NextLevel();
                     uiManager.UpdateLevelObjectiveUI();
                     break;
                 case GameState.LevelFailed:
                     PauseGame();
-                    uiManager.ShowPhotoInspector();
+                    uiManager.ShowPhotoInspector(false);
                     break;
             }
         }
@@ -81,7 +81,7 @@ namespace Globals
         {
             Time.timeScale = 1f;
             allowInput = true;
-            uiManager.ShowPhotoInspector(false);
+            uiManager.ShowPhotoInspector(false,false);
         }
 
         public void PauseGame()

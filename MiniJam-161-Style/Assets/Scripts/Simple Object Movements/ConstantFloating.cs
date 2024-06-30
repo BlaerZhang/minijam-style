@@ -36,13 +36,13 @@ namespace Simple_Object_Movements
 
         private void OnEnable()
         {
-            print("play");
+            // print("play");
             floatTween.Play();
         }
 
         private void OnDisable()
         {
-            print("pause");
+            // print("pause");
             floatTween.Pause();
         }
     }

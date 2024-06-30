@@ -140,10 +140,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.94716495}
+  m_Offset: {x: -1.21, y: 1.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0}
@@ -154,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.9742267, y: 1.8943299}
+  m_Size: {x: 1.91, y: 0.63}
   m_EdgeRadius: 0
 --- !u!1 &956732697209012280
 GameObject:
@@ -774,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2596470855526753814}
   - component: {fileID: 8843180366795611105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Elephant Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

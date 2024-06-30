@@ -74,7 +74,7 @@ public class Baseball : MonoBehaviour, IItem, IItemAuto
         }
         if (other == Fireworker)
         {
-            Debug.Log("meet fireworker");
+            // Debug.Log("meet fireworker");
             Destroy(this.gameObject);
         }
     }
@@ -85,7 +85,7 @@ public class Baseball : MonoBehaviour, IItem, IItemAuto
     {
         float x = Random.Range(20, width);
         float y = Random.Range(0, height);
-        Debug.Log("destination" + x + "," + y);
+        // Debug.Log("destination" + x + "," + y);
         Vector3 worldPosition = Camera.main.
             ScreenToWorldPoint(new Vector2(x, y));
         return worldPosition;

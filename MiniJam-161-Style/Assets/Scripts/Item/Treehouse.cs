@@ -8,13 +8,13 @@ public class Treehouse : MonoBehaviour
 
     public void GetKidsIn()
     {
-        Debug.Log("Kids in.");
+        // Debug.Log("Kids in.");
         TreehouseWithKids.SetActive(true);
     }
 
     public void GetKidsOut()
     {
-        Debug.Log("Kids out.");
+        // Debug.Log("Kids out.");
         TreehouseWithKids.SetActive(false);
     }
 }
