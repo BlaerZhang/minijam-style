@@ -7,13 +7,17 @@ public class Fireworker : MonoBehaviour
 
     public GameObject firework;
     public Animator animator;
+    public Vector2 InitialPosition;
     public float speed = 2f;
+    public float returnSpeed = 2f;
     public float fireworkLength = 5f;
     public bool isMoving = false; //tell the animator
 
     public bool fireworked = false;
     public bool fireworking = false;
 
+
+    private bool gotBack = true; //get back before next
     //private Baseball nearbyItemAuto;
     //private Baseball baseball;
     private IItemAuto nearbyItemAuto;
@@ -27,56 +31,39 @@ public class Fireworker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Find the baseball if the parent component is not already referenced
-        if (baseball == null)
-        {
-            
-            GameObject childObject = GameObject.FindWithTag("Baseball");
-            if (childObject != null)
-            {
-                Transform parentTransform = childObject.transform.parent;
-                if (parentTransform != null)
-                {
-                    baseball = parentTransform.GetComponent<Baseball>();
-                    if (baseball != null)
-                    {
-                        Debug.Log("Baseball Found");
-                        
-                    }
-                    else
-                    {
-                        Debug.LogError("Parent does not have a Baseball script");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Baseball has no parent");
-                }
-            }
-            else
-            {
-               // Debug.Log("Fireworker Found No Baseball Tag");
-            }
-        }
+
+        GetBaseball();
 
 
-
-        if (baseball != null && (baseball.settled || baseball.following))
+        if (baseball != null && (baseball.settled || baseball.following) && gotBack)
         {//then move towards it
             isMoving = true;
-            animator.SetBool("is_moving", isMoving);
+            
             float step = speed * Time.deltaTime;
             Vector2 direction = baseball.transform.position - transform.position;
             transform.position =
                 Vector2.MoveTowards(transform.position, baseball.transform.position, step);
-            if (direction.x >= 0)
+            AnimationSetter(direction);
+            
+        }
+        else if (!gotBack)
+        {
+            Debug.Log("going back");
+            if (Vector2.Distance(transform.position, InitialPosition) < 0.01f)
             {
-                animator.SetBool("going_right", true);
+                gotBack = true;
+                isMoving = false;
+                animator.SetBool("is_moving", isMoving);
             }
             else
             {
-                animator.SetBool("going_right", false);
-            } 
+                isMoving = true;
+                float step = returnSpeed * Time.deltaTime;
+                transform.position =
+                    Vector2.MoveTowards(transform.position, InitialPosition, step);
+                Vector2 direction = InitialPosition - new Vector2(transform.position.x, transform.position.y);
+                AnimationSetter(direction);
+            }
             
         }
 
@@ -145,7 +132,56 @@ public class Fireworker : MonoBehaviour
         //wait
         yield return new WaitForSeconds(fireworkLength);
         //firework ends
+        gotBack = false;
         fireworking = false;
         firework.SetActive(false);
+    }
+
+    private void AnimationSetter(Vector2 direction)
+    {
+        animator.SetBool("is_moving", isMoving);
+        if (direction.x >= 0)
+        {
+            animator.SetBool("going_right", true);
+        }
+        else
+        {
+            animator.SetBool("going_right", false);
+        }
+    }
+
+    private void GetBaseball() //find reference to the baseball
+    {
+        // Find the baseball if the parent component is not already referenced
+        if (baseball == null)
+        {
+
+            GameObject childObject = GameObject.FindWithTag("Baseball");
+            if (childObject != null)
+            {
+                Transform parentTransform = childObject.transform.parent;
+                if (parentTransform != null)
+                {
+                    baseball = parentTransform.GetComponent<Baseball>();
+                    if (baseball != null)
+                    {
+                        Debug.Log("Baseball Found");
+
+                    }
+                    else
+                    {
+                        Debug.LogError("Parent does not have a Baseball script");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Baseball has no parent");
+                }
+            }
+            else
+            {
+                // Debug.Log("Fireworker Found No Baseball Tag");
+            }
+        }
     }
 }
