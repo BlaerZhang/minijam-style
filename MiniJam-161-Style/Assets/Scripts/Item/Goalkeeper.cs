@@ -68,14 +68,14 @@ public class Goalkeeper : MonoBehaviour, IItemAuto
     {
         _isFailed = true;
         _animator.SetBool("isFailed", true);
-        GetComponentInChildren<SpriteRenderer>().sprite = GKFailed;
+        // GetComponentInChildren<SpriteRenderer>().sprite = GKFailed;
         ShowBanner();
         
         DOVirtual.DelayedCall(2, () =>
         {
             _isFailed = false;
             _animator.SetBool("isFailed", false);
-            GetComponentInChildren<SpriteRenderer>().sprite = GKIdle;
+            // GetComponentInChildren<SpriteRenderer>().sprite = GKIdle;
             HideBanner();
         }).Play();
     }

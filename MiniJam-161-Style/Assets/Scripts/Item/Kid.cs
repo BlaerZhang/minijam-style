@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Kid : MonoBehaviour
 {
-    public Vector2 InitialPosition;
+    [HideInInspector] public Vector2 InitialPosition;
     public GameObject fireworkerObj;
     public GameObject treehouseObj;
     public GameObject kidShootable;
@@ -28,6 +28,7 @@ public class Kid : MonoBehaviour
     {
         fireworker = fireworkerObj.GetComponent<Fireworker>();
         treehouse = treehouseObj.GetComponent<Treehouse>();
+        InitialPosition = transform.position;
     }
 
     // Update is called once per frame
