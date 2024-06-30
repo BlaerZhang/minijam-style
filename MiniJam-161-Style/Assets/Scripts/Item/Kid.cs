@@ -6,22 +6,28 @@ public class Kid : MonoBehaviour
 {
     public Vector2 InitialPosition;
     public GameObject fireworkerObj;
-    public GameObject treehouse;
+    public GameObject treehouseObj;
+    public GameObject kidShootable;
+    public GameObject kidCollider;
     public float speed = 2f;
+    public float timeInTree = 2f;
     public float OffsetX = 1f; //offset for staging the kids around the firework
     public float OffsetY = 0f;
 
     private bool idle = true;
     bool watching = false;
-    bool BeenInHouse = false;
+    bool beenInHouse = false;
+    bool inHouse = false;
     bool goingBack = false;
 
     private Fireworker fireworker;
+    private Treehouse treehouse;
 
     // Start is called before the first frame update
     void Start()
     {
         fireworker = fireworkerObj.GetComponent<Fireworker>();
+        treehouse = treehouseObj.GetComponent<Treehouse>();
     }
 
     // Update is called once per frame
@@ -32,7 +38,7 @@ public class Kid : MonoBehaviour
             idle = false;
         }
 
-        if (!idle)
+        if (!idle && !inHouse)
         {
             float step = speed * Time.deltaTime;
             //move
@@ -54,7 +60,7 @@ public class Kid : MonoBehaviour
             else
             {
                 watching = false; // not watching firework
-                if (!BeenInHouse)
+                if (!beenInHouse)
                 {
                     //go to tree house
                     
@@ -62,12 +68,14 @@ public class Kid : MonoBehaviour
                     Vector2.MoveTowards(transform.position,
                     treehouse.transform.position, step);
 
-                    if (Vector2.Distance(InitialPosition,
+                    if (Vector2.Distance(transform.position,
                         treehouse.transform.position) < 0.1f)
                     {
-                        // get to house
-                        BeenInHouse = true;
+                        Debug.Log("Got to tree");
+                        //get to house
+                        beenInHouse = true;
                         //animation
+                        StartCoroutine(TreeHouseAnimation());
                     }
                 }
                 else
@@ -79,10 +87,26 @@ public class Kid : MonoBehaviour
                     if (Vector2.Distance(InitialPosition, transform.position) < 0.01f) //get back
                     {
                         //stay until next firework
+                        beenInHouse = false;
                         idle = true;
                     }
                 }
             }
         }
+    }
+
+    private IEnumerator TreeHouseAnimation() {
+        Debug.Log("Tree triggered");
+        inHouse = true;
+        kidShootable.SetActive(false);
+        kidCollider.SetActive(false);
+        treehouse.GetKidsIn();
+        yield return new WaitForSeconds(timeInTree);
+        Debug.Log("Tree triggered again.");
+        treehouse.GetKidsOut();
+        inHouse = false;
+        kidShootable.SetActive(true);
+        kidCollider.SetActive(true);
+
     }
 }

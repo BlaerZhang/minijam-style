@@ -27,6 +27,8 @@ TagManager:
   - Band
   - Couple
   - Rainbow
+  - TreehouseWithKids
+  - TreehouseWithoutKids
   layers:
   - Default
   - TransparentFX
