@@ -32,8 +32,30 @@ public class NightCity : MonoBehaviour
 
     public void TurnOffLight()
     {
-        print("turned off");
-        if (isLightOn) isLightOn = false;
-        DOVirtual.DelayedCall(1, () => isLightOn = true).Play().SetUpdate(false);
+        Sequence lightOffSequence = DOTween.Sequence();
+        lightOffSequence
+            .AppendCallback(() => isLightOn = false)
+            .AppendInterval(0.1f)
+            .AppendCallback(() => isLightOn = true)
+            .AppendInterval(0.1f)
+            .AppendCallback(() => isLightOn = false)
+            .AppendInterval(0.05f)
+            .AppendCallback(() => isLightOn = true)
+            .AppendInterval(0.1f);
+
+        if (isLightOn) lightOffSequence.Play().OnComplete(() => isLightOn = false);
+        
+        Sequence lightOnSequence = DOTween.Sequence();
+        lightOnSequence
+            .AppendCallback(() => isLightOn = true)
+            .AppendInterval(0.1f)
+            .AppendCallback(() => isLightOn = false)
+            .AppendInterval(0.1f)
+            .AppendCallback(() => isLightOn = true)
+            .AppendInterval(0.05f)
+            .AppendCallback(() => isLightOn = false)
+            .AppendInterval(0.1f);
+        
+        DOVirtual.DelayedCall(2, () => lightOnSequence.Play().OnComplete(() => isLightOn = true)).Play().SetUpdate(false);
     }
 }

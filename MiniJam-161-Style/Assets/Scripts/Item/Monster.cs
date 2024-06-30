@@ -6,39 +6,53 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour, IItem
 {
-    // public IItem.InteractionTypes interactionTypes = IItem.InteractionTypes.press;
-    // public IItem.InteractionTypes InteractionType
-    // {
-    //     get => interactionTypes;
-    //     set => interactionTypes = value;
-    // }
-    
     private bool isInteractable = true;
     public NightCity nightCity;
+    public GameObject fire;
     public float stunDuration = 1f;
-    public Vector2 travelXStartEnd;
+    public float nightCityPosXOffset;
+    public float outOfScreenOffset = 50;
     private Sequence _sequence;
     public void Interact()
     {
-        _sequence.Pause();
-        isInteractable = false;
-        DOVirtual.DelayedCall(stunDuration, () =>
-        {
-            _sequence.Play();
-            isInteractable = true;
-        }).Play();
+        // _sequence.Pause();
+        // isInteractable = false;
+        // DOVirtual.DelayedCall(stunDuration, () =>
+        // {
+        //     _sequence.Play();
+        //     isInteractable = true;
+        // }).Play();
     }
 
     private void Start()
     {
+        Vector2 startPos =
+            new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(0 - outOfScreenOffset, 0)).x, transform.position.y);
+        
+        Vector2 endPos =
+            new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width + outOfScreenOffset, 0)).x, transform.position.y);
+
+        transform.position = startPos;
+        fire.SetActive(false);
+
         _sequence = DOTween.Sequence();
         _sequence
-            .Append(transform.DOMoveX(travelXStartEnd.y, 2f))
-            .AppendInterval(1)
-            .AppendCallback(()=> nightCity.TurnOffLight())
-            .Append(transform.DOMoveX(travelXStartEnd.x, 2f))
-            .AppendInterval(1)
+            .Append(transform.DOMoveX(nightCity.transform.position.x - nightCityPosXOffset, 2f).SetEase(Ease.Linear))
+            .AppendInterval(0.3f)
+            .AppendCallback(() => 
+            {
+                fire.SetActive(true);
+                nightCity.TurnOffLight();
+            })
+            .AppendInterval(0.2f)
+            .Append(transform.DOMoveX(endPos.x, 2f).SetEase(Ease.Linear))
+            .AppendCallback(() =>
+            {
+                transform.position = startPos;
+                fire.SetActive(false);
+            })
             .SetLoops(-1, LoopType.Restart);
+        
         _sequence.Play();
     }
 }

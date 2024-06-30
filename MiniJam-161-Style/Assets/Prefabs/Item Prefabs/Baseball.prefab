@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6756071365819854396
 Transform:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955147575433405544}
   - component: {fileID: 4860306208343997065}
-  - component: {fileID: 6661761589834982620}
+  - component: {fileID: 1698470501138586661}
   m_Layer: 7
   m_Name: Baseball Shootable
   m_TagString: Baseball
@@ -152,8 +152,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6661761589834982620
-CircleCollider2D:
+--- !u!61 &1698470501138586661
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -185,8 +185,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.26546392}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.53350514, y: 0.53092784}
+    newSize: {x: 0.53350514, y: 0.53092784}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.26675257
+  m_Size: {x: 0.41, y: 0.41}
+  m_EdgeRadius: 0
 --- !u!1 &8724614723021903076
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +282,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   Fireworker: {fileID: 0}
   destination: {x: 0, y: 0}
-  speed: 2
+  speed: 5
   settled: 0
   following: 0
   interactable: 1

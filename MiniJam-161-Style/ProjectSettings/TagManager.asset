@@ -21,6 +21,12 @@ TagManager:
   - FireworkerInteract
   - Firework
   - Kid
+  - UFO
+  - CoupleCar
+  - Cow
+  - Band
+  - Couple
+  - Rainbow
   layers:
   - Default
   - TransparentFX

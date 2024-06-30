@@ -24,7 +24,7 @@ public class Baseball : MonoBehaviour, IItem, IItemAuto
     void Start()
     {
         destination = GetRandomPosition(DestiRangeX, DestiRangeY);
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = FindObjectOfType<PlayerMovement>().gameObject;
         Fireworker = GameObject.FindGameObjectWithTag("FireworkerInteract");
     }
 

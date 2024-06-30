@@ -32,7 +32,7 @@ public class PlayerInteraction : MonoBehaviour
         IItemAuto itemAuto = other.GetComponent<IItemAuto>();
         if (itemAuto != null && itemAuto != nearbyItemAuto)
         {
-            //Debug.Log("Trigger success");
+            // Debug.Log("Triggered " + itemAuto);
             nearbyItemAuto = itemAuto;
             
             //TODO: temp interact, to be optimized
