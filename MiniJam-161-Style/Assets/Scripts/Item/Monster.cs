@@ -37,13 +37,14 @@ public class Monster : MonoBehaviour, IItem
 
         _sequence = DOTween.Sequence();
         _sequence
-            .Append(transform.DOMoveX(nightCity.transform.position.x - nightCityPosXOffset, 5f).SetEase(Ease.Linear))
-            .AppendInterval(0)
+            .Append(transform.DOMoveX(nightCity.transform.position.x - nightCityPosXOffset, 2f).SetEase(Ease.Linear))
+            .AppendInterval(0.3f)
             .AppendCallback(() => 
             {
                 fire.SetActive(true);
                 nightCity.TurnOffLight();
             })
+            .AppendInterval(0.2f)
             .Append(transform.DOMoveX(endPos.x, 2f).SetEase(Ease.Linear))
             .AppendCallback(() =>
             {
