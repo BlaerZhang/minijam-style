@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5444368739037276756}
   - component: {fileID: 7668043233112047372}
   m_Layer: 9
-  m_Name: Fireworker
+  m_Name: Fireworker_Old
   m_TagString: FireworkerInteract
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
