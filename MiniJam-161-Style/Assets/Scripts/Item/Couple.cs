@@ -15,6 +15,7 @@ public class Couple : MonoBehaviour
     public float fadeDuration = 1f;
 
     private CircleCollider2D _collider2D;
+    private Animator _animator;
 
     private bool isRomantic = false;
     private bool isKidAround = false;
@@ -26,6 +27,7 @@ public class Couple : MonoBehaviour
     {
         _collider2D = GetComponent<CircleCollider2D>();
         _collider2D.radius = detectionRadius;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -70,6 +72,7 @@ public class Couple : MonoBehaviour
             if (!isRomantic)
             {
                 isRomantic = true;
+                _animator.SetBool("isRomantic", true);
                 ShowRomanticBanner();
             }
         }
@@ -79,6 +82,7 @@ public class Couple : MonoBehaviour
             {
                 HideRomanticBanner();
                 isRomantic = false;
+                _animator.SetBool("isRomantic", false);
             }
         }
     }

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: idle_right
+  m_Name: couple_romantic
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: ec0e73940960d9f4ea73687928e1337e, type: 3}
+      value: {fileID: 21300000, guid: 3f9482a6c3e25f1429a602be3a77d105, type: 3}
     - time: 0.1
-      value: {fileID: 21300000, guid: cbbdaa481604e2c4a82457e563ec8e47, type: 3}
+      value: {fileID: 21300000, guid: 13afd6f6585b7954e8e4163621a7b4b4, type: 3}
     attribute: m_Sprite
-    path: Dog Shootable
+    path: Couple Car Shootable
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -37,7 +37,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3803378120
+      path: 1881839109
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: ec0e73940960d9f4ea73687928e1337e, type: 3}
-    - {fileID: 21300000, guid: cbbdaa481604e2c4a82457e563ec8e47, type: 3}
+    - {fileID: 21300000, guid: 3f9482a6c3e25f1429a602be3a77d105, type: 3}
+    - {fileID: 21300000, guid: 13afd6f6585b7954e8e4163621a7b4b4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

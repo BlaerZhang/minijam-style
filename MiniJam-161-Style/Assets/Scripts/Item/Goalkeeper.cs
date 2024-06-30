@@ -7,6 +7,7 @@ using UnityEngine;
 public class Goalkeeper : MonoBehaviour, IItemAuto
 {
     private GameObject _defendingTarget;
+    private Animator _animator;
     private bool _isDefending = false;
     private bool _isFailed = false;
 
@@ -24,6 +25,7 @@ public class Goalkeeper : MonoBehaviour, IItemAuto
     public void Interact(GameObject gameObject)
     {
         _isDefending = true;
+        _animator.SetBool("isDefending", true);
         
         if(_defendingTarget != null)
             if (_defendingTarget.GetComponent<PlayerMovement>() != null)
@@ -35,6 +37,7 @@ public class Goalkeeper : MonoBehaviour, IItemAuto
     {
         Goal.OnGoal += OnGoal;
         banner.gameObject.SetActive(false);
+        _animator = GetComponent<Animator>();
     }
     
     private void OnDisable()
@@ -57,18 +60,21 @@ public class Goalkeeper : MonoBehaviour, IItemAuto
         {
             _defendingTarget = null;
             _isDefending = false;
+            _animator.SetBool("isDefending", false);
         }
     }
 
     void OnGoal()
     {
         _isFailed = true;
+        _animator.SetBool("isFailed", true);
         GetComponentInChildren<SpriteRenderer>().sprite = GKFailed;
         ShowBanner();
         
         DOVirtual.DelayedCall(2, () =>
         {
             _isFailed = false;
+            _animator.SetBool("isFailed", false);
             GetComponentInChildren<SpriteRenderer>().sprite = GKIdle;
             HideBanner();
         }).Play();
