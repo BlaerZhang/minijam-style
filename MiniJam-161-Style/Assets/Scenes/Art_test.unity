@@ -192,6 +192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Band
       objectReference: {fileID: 0}
+    - target: {fileID: 1491065449824462002, guid: 1e9e069497aec497aac80b168c45a767, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3496396631307480512, guid: 1e9e069497aec497aac80b168c45a767, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.7495375
@@ -332,6 +336,10 @@ PrefabInstance:
     - target: {fileID: 3361071401494532168, guid: c58d8c2ac1be3c44583fe283139cbb96, type: 3}
       propertyPath: m_Name
       value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361071401494532168, guid: c58d8c2ac1be3c44583fe283139cbb96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4105346287900486476, guid: c58d8c2ac1be3c44583fe283139cbb96, type: 3}
       propertyPath: m_LocalPosition.x
@@ -505,6 +513,10 @@ PrefabInstance:
     - target: {fileID: 7805625591612828915, guid: b633c667da3674037b98353b1dddaba8, type: 3}
       propertyPath: m_Name
       value: Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805625591612828915, guid: b633c667da3674037b98353b1dddaba8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -708,6 +720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireworker_Old
       objectReference: {fileID: 0}
+    - target: {fileID: 1083745568529952330, guid: 97feaf496e5dff641b187adba7890d22, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4204971664714718236, guid: 97feaf496e5dff641b187adba7890d22, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.45
@@ -770,6 +786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Couple Car
       objectReference: {fileID: 0}
+    - target: {fileID: 3422654012641858354, guid: b34abdd348ec3473f9f829a4e994230a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8547025888661510228, guid: b34abdd348ec3473f9f829a4e994230a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.307304
@@ -826,6 +846,10 @@ PrefabInstance:
     - target: {fileID: 6634018758120219035, guid: 1492fa0d6d8b8b5449acd4f35bff7ff8, type: 3}
       propertyPath: m_Name
       value: BaseballSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634018758120219035, guid: 1492fa0d6d8b8b5449acd4f35bff7ff8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7486051905128235698, guid: 1492fa0d6d8b8b5449acd4f35bff7ff8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1225,6 +1249,10 @@ PrefabInstance:
     - target: {fileID: 97280803117636747, guid: a8665ae52f00f7e4ea6f9409111e4d56, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 97280803117636747, guid: a8665ae52f00f7e4ea6f9409111e4d56, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7596502638456524952, guid: a8665ae52f00f7e4ea6f9409111e4d56, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2078,6 +2106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 1281269036992916589, guid: bd0879e0516683146a8fbd0f8faa0b18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1539511368466753848, guid: bd0879e0516683146a8fbd0f8faa0b18, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.22279155
@@ -2710,6 +2742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cow
       objectReference: {fileID: 0}
+    - target: {fileID: 8296263784992339939, guid: 91acbdde1d44d45e4b01b94082c2c06d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2796,6 +2832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kid (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7805625591612828915, guid: b633c667da3674037b98353b1dddaba8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2852,6 +2892,10 @@ PrefabInstance:
     - target: {fileID: 3976987985604195188, guid: 03305858736f57544ac74ab3d2618257, type: 3}
       propertyPath: m_Name
       value: Dog
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976987985604195188, guid: 03305858736f57544ac74ab3d2618257, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2934,6 +2978,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kid (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7805625591612828915, guid: b633c667da3674037b98353b1dddaba8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2947,6 +2995,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1269137243}
     m_Modifications:
+    - target: {fileID: 489100950427149272, guid: 68aafa795fa674184bf999ec2d1ac1bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1743367672027857629, guid: 68aafa795fa674184bf999ec2d1ac1bd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3031,6 +3083,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Photo Inspector
       objectReference: {fileID: 0}
+    - target: {fileID: 7152656137628754831, guid: 68aafa795fa674184bf999ec2d1ac1bd, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7152656137628754831, guid: 68aafa795fa674184bf999ec2d1ac1bd, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7152656137628754831, guid: 68aafa795fa674184bf999ec2d1ac1bd, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3097,6 +3161,10 @@ PrefabInstance:
     - target: {fileID: 7589393868568501159, guid: 9bec8b7d6291648bc9181138637b1084, type: 3}
       propertyPath: m_Name
       value: Treehouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589393868568501159, guid: 9bec8b7d6291648bc9181138637b1084, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3418,6 +3486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kid (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7805625591612828915, guid: b633c667da3674037b98353b1dddaba8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3598,6 +3670,10 @@ PrefabInstance:
     - target: {fileID: 7805625591612828915, guid: b633c667da3674037b98353b1dddaba8, type: 3}
       propertyPath: m_Name
       value: Kid (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805625591612828915, guid: b633c667da3674037b98353b1dddaba8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4286,7 +4362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5607252286046727059, guid: 1d2bd063a91ba4ec3915b64920fe248e, type: 3}
       propertyPath: cameraXLimits.y
-      value: 1600
+      value: 945
       objectReference: {fileID: 0}
     - target: {fileID: 5607252286046727059, guid: 1d2bd063a91ba4ec3915b64920fe248e, type: 3}
       propertyPath: defaultCameraFrameSize.x
@@ -4373,6 +4449,10 @@ PrefabInstance:
     - target: {fileID: 1672003437164171536, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
       propertyPath: m_Name
       value: UFO
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672003437164171536, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1884326730027098253, guid: 6398c2f597c754b31882ca7237e2c566, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4489,6 +4569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goalkeeper
       objectReference: {fileID: 0}
+    - target: {fileID: 6329217286398732415, guid: 5e5799bc95dcf1a44afe3de2a848bc1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6335753154891041279, guid: 5e5799bc95dcf1a44afe3de2a848bc1d, type: 3}
       propertyPath: banner
       value: 
@@ -4593,6 +4677,10 @@ PrefabInstance:
     - target: {fileID: 8028460167599487231, guid: 0c975c91f1e894246ad47023a10dc351, type: 3}
       propertyPath: m_Name
       value: Elephant_Old
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028460167599487231, guid: 0c975c91f1e894246ad47023a10dc351, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645653987441788403, guid: 0c975c91f1e894246ad47023a10dc351, type: 3}
       propertyPath: m_LocalPosition.x

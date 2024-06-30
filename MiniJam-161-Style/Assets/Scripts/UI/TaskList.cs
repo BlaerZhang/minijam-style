@@ -30,15 +30,6 @@ public class TaskList : MonoBehaviour
         GenerateTaskList();
     }
 
-    private void Update()
-    {
-        // TODO: DELETE THIS WHEN BUILD!!!!!!!!!!!!
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            UpdateTask();
-        }
-    }
-
     private void GenerateTaskList()
     {
         List<LevelObjectivesSO.LevelObjective> levelObjectives =

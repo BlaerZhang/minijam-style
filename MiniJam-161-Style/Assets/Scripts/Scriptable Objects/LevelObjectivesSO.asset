@@ -15,7 +15,7 @@ MonoBehaviour:
   levelObjectives:
   - levelName: 'Flight over a slumbering city :'
     description: Take a photo with <color=#b51c1c>[bird]</color> and <color=#b51c1c>[light-off
-      city]</color>.
+      city]</color> without <color=#b51c1c>[godzilla]</color>.
     winningObjectiveTags:
     - Player
     - NightCityLightOff
