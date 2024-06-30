@@ -171,8 +171,8 @@ namespace Camera_Controller
             Vector3 screenBottomLeft = corners[0];
             Vector3 screenTopRight = corners[2];
 
-            // Rect captureRect = new Rect(screenBottomLeft, new Vector2(Mathf.Abs(screenTopRight.x - screenBottomLeft.x), Mathf.Abs(screenTopRight.y - screenBottomLeft.y)));
-            Rect captureRect = new Rect(new Vector2(screenBottomLeft.x,Screen.height - screenTopRight.y), new Vector2(Mathf.Abs(screenTopRight.x - screenBottomLeft.x), Mathf.Abs(screenTopRight.y - screenBottomLeft.y)));
+            Rect captureRect = new Rect(screenBottomLeft, new Vector2(Mathf.Abs(screenTopRight.x - screenBottomLeft.x), Mathf.Abs(screenTopRight.y - screenBottomLeft.y)));
+            // Rect captureRect = new Rect(new Vector2(screenBottomLeft.x,Screen.height - screenTopRight.y), new Vector2(Mathf.Abs(screenTopRight.x - screenBottomLeft.x), Mathf.Abs(screenTopRight.y - screenBottomLeft.y)));
 
             // 将屏幕坐标转换为世界坐标
             Vector3 worldBottomLeft = Camera.main.ScreenToWorldPoint(screenBottomLeft);
