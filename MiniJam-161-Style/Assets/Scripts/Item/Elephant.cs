@@ -16,11 +16,11 @@ public class Elephant : MonoBehaviour, IItem
 
     private Animator WaterAnimator;
 
-    public float IntervalBeforeWater = 1.5f;
-    public float ElephantLength = 0.2f;
+    public float Interval = 1.5f;
+    public float ElephantDuration = 3f;
+
     public void Interact()
     {
-        Debug.Log("Interacted with " + gameObject.name);
         Debug.Log("Interacted with " + gameObject.name);
         if (!isWorking)
         {
@@ -30,17 +30,50 @@ public class Elephant : MonoBehaviour, IItem
 
     private IEnumerator PlayElephantAnimation()
     {
-        isWorking = true;
-        ElephantAnimator.Play("elephant_park");
-        yield return new WaitForSeconds(ElephantAnimator.GetCurrentAnimatorStateInfo(0).length / 3);
-        ElephantAnimator.speed = 0;
+        //nose-in -> nose-up -> water -> rainbow
+        //water -> rainbow -> nose-down -> nose-out
+
+        isWorking = true; // change state so not interactable
+
+        ElephantAnimator.SetTrigger("elephantTrigger");
+        yield return new WaitForSeconds(Interval);
         NoseAnimator.Play("nose-rise");
-        yield return new WaitForSeconds(IntervalBeforeWater);
+
+        yield return new WaitForSeconds(Interval);
+        Debug.Log("came here");
         Water.SetActive(true);
+
+        yield return new WaitForSeconds(Interval);
         Rainbow.gameObject.SetActive(true);
         Rainbow.DOFade(1, 2f);
         WaterAnimator = Water.GetComponent<Animator>();
+
+        // static bool state changed here after animation finishes
         deviceTriggered = true;
+
+        yield return new WaitForSeconds(ElephantDuration); //how long everything stays
+
+        //water disappear
+        WaterAnimator.Play("Water-Exit");
+        yield return new WaitForSeconds(0.5f);
+        Water.SetActive(false);
+
+        //rainbow disappear 
+        yield return new WaitForSeconds(0.5f);
+        Rainbow.DOFade(0, 1f).OnComplete(() => Rainbow.gameObject.SetActive(false));
+        
+
+        NoseAnimator.Play("nose-down");
+        yield return new WaitForSeconds(Interval);
+        ElephantAnimator.SetTrigger("elephantTrigger");
+
+        //change state back
+        isWorking = false;
+        deviceTriggered = false;
+
+        //    yield return new WaitForSeconds(Interval);
+        //    ElephantAnimator.SetTrigger("elephantTrigger");
+        //}
     }
 
 
