@@ -13,12 +13,14 @@ namespace Globals
         public Slider batteryUI;
 
         [Header("Level Objective UI")]
-        public TextMeshProUGUI currentObjectiveUI;
+        public TaskList taskList;
 
         public void UpdateLevelObjectiveUI()
         {
-            // TODO: objective text formatting
-            // currentObjectiveUI.text =
+            // TODO: check the box
+
+            // then show the
+            taskList.UpdateTask();
         }
 
         public void UpdateCameraBatteryPercentage(float batteryPercentage)

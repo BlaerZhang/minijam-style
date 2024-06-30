@@ -25,8 +25,7 @@ public class Band : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (_currentHumanoidInRange == humanoidInRangeTriggerCount) return;
-
-        print(other.tag);
+        
         if (humanoidTags.Contains(other.tag))
         {
             bandMembers[_currentHumanoidInRange].StartPlaying();

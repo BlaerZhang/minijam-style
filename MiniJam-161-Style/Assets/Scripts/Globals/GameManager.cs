@@ -67,7 +67,8 @@ namespace Globals
                 case GameState.LevelCompleted:
                     PauseGame();
                     uiManager.ShowPhotoInspector();
-                    // levelManager.NextLevel();
+                    levelManager.NextLevel();
+                    uiManager.UpdateLevelObjectiveUI();
                     break;
                 case GameState.LevelFailed:
                     PauseGame();
