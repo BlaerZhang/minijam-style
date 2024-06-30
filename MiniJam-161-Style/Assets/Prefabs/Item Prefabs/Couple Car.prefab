@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4242824314516536229}
   - component: {fileID: 531363585405627286}
   - component: {fileID: 3218071063542942838}
+  - component: {fileID: 369284875478313814}
   m_Layer: 7
   m_Name: Couple Car Shootable
   m_TagString: CoupleCar
@@ -93,7 +94,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968450237197842351}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -131,6 +132,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5783089, y: 0.365422}
   m_EdgeRadius: 0
+--- !u!210 &369284875478313814
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968450237197842351}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &3422654012641858354
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,13 +291,14 @@ GameObject:
   - component: {fileID: 7409641717789315109}
   - component: {fileID: 2603528286798579666}
   - component: {fileID: 7324711118316196005}
-  m_Layer: 0
+  - component: {fileID: 1134638523555761560}
+  m_Layer: 7
   m_Name: Romantic
-  m_TagString: Untagged
+  m_TagString: Romantic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7409641717789315109
 Transform:
   m_ObjectHideFlags: 0
@@ -366,6 +380,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatDistance: 0.1
   floatDuration: 1
+--- !u!61 &1134638523555761560
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4034895587302768511}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.007863045, y: 1.4819463}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.2345362, y: 1.1469072}
+    newSize: {x: 8.67, y: 4.45}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6305151, y: 0.3848784}
+  m_EdgeRadius: 0
 --- !u!1 &8472661253524653882
 GameObject:
   m_ObjectHideFlags: 0
