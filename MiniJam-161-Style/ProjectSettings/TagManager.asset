@@ -25,6 +25,8 @@ TagManager:
   - CoupleCar
   - Cow
   - Band
+  - Couple
+  - Rainbow
   layers:
   - Default
   - TransparentFX

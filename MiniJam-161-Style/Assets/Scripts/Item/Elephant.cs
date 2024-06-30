@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -11,6 +12,7 @@ public class Elephant : MonoBehaviour, IItem
     public Animator NoseAnimator;
     public Animator ElephantAnimator;
     public GameObject Water;
+    public SpriteRenderer Rainbow;
 
     private Animator WaterAnimator;
 
@@ -35,6 +37,8 @@ public class Elephant : MonoBehaviour, IItem
         NoseAnimator.Play("nose-rise");
         yield return new WaitForSeconds(IntervalBeforeWater);
         Water.SetActive(true);
+        Rainbow.gameObject.SetActive(true);
+        Rainbow.DOFade(1, 2f);
         WaterAnimator = Water.GetComponent<Animator>();
         deviceTriggered = true;
     }

@@ -28,6 +28,11 @@ public class Couple : MonoBehaviour
         _collider2D.radius = detectionRadius;
     }
 
+    private void Update()
+    {
+        isRainingOrRainbow = Elephant.deviceTriggered;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         DetectRomantics();
@@ -60,7 +65,7 @@ public class Couple : MonoBehaviour
         }
 
         // if (!isKidAround & isFireworkAround & isRainingOrRainbow)
-        if (!isKidAround & isFireworkAround)
+        if (!isKidAround & isFireworkAround & isRainingOrRainbow)
         {
             if (!isRomantic)
             {
