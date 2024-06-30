@@ -67,6 +67,7 @@ namespace Globals
                     break;
                 case GameState.LevelCompleted:
                     PauseGame();
+                    audioManager.PlaySfx("LevelComplete");
                     uiManager.ShowPhotoInspector(true);
                     levelManager.NextLevel();
                     uiManager.UpdateLevelObjectiveUI();

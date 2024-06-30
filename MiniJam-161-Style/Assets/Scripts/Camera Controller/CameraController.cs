@@ -161,6 +161,7 @@ namespace Camera_Controller
 
         private void Shoot()
         {
+            GameManager.Instance.audioManager.PlaySfx("CameraShutter");
             // print("Shoot");
             //Todo: check resource, then -1
 

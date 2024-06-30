@@ -690,7 +690,11 @@ MonoBehaviour:
   musicClips:
   - name: BGM
     clip: {fileID: 8300000, guid: 3e72b19233e40524e8a400ce5a819ad4, type: 3}
-  sfxClips: []
+  sfxClips:
+  - name: CameraShutter
+    clip: {fileID: 8300000, guid: 371696280c8084a5dafb24ddec68e16c, type: 3}
+  - name: LevelComplete
+    clip: {fileID: 8300000, guid: a888622c63c1e49aaa338f8f87050039, type: 3}
 --- !u!4 &356918077
 Transform:
   m_ObjectHideFlags: 0
