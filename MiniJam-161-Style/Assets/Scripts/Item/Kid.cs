@@ -73,8 +73,12 @@ public class Kid : MonoBehaviour
                 else
                 {
                     //go back
+                    transform.position =
+                    Vector2.MoveTowards(transform.position,
+                    InitialPosition, step);
                     if (Vector2.Distance(InitialPosition, transform.position) < 0.01f) //get back
                     {
+                        //stay until next firework
                         idle = true;
                     }
                 }
