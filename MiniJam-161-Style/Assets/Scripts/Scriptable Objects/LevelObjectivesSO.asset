@@ -41,6 +41,7 @@ MonoBehaviour:
     description: Take a photo with <color=#b51c1c>[frustrated goalkeeper]</color>.
     winningObjectiveTags:
     - Player
+    - GoalkeeperFailed
     failingObjectiveTags: []
   - levelName: '<i>A romantic night without kids</i> :'
     description: Take a photo with <color=#b51c1c>[couples in romantic mood]</color>,<color=#b51c1c>[firework]</color>,

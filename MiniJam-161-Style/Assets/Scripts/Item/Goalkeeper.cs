@@ -14,8 +14,8 @@ public class Goalkeeper : MonoBehaviour, IItemAuto
     public float moveSpeed = 5f;
     public Vector2 XPosLimits;
     public float detachDistance = 2.5f;
-    public Sprite GKIdle;
-    public Sprite GKFailed;
+    public GameObject GKIdleShootable;
+    public GameObject GKFailedShootable;
     
     [Header("Banner Settings")]
     // show after all band members are playing
@@ -47,6 +47,18 @@ public class Goalkeeper : MonoBehaviour, IItemAuto
 
     void Update()
     {
+        switch (_isFailed)
+        {
+            case true:
+                GKFailedShootable.SetActive(true);
+                GKIdleShootable.SetActive(false);
+                break;
+            case false:
+                GKFailedShootable.SetActive(false);
+                GKIdleShootable.SetActive(true);
+                break;
+        }
+        
         if (_defendingTarget == null) return;
         
         if (_isDefending && !_isFailed)

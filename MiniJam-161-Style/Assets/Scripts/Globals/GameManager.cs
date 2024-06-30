@@ -46,6 +46,7 @@ namespace Globals
         void Start()
         {
             ChangeState(GameState.MainMenu);
+            audioManager.PlayMusic("BGM");
         }
 
         public void ChangeState(GameState newState)

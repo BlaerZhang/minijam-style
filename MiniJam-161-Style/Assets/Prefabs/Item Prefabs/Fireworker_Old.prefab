@@ -112,7 +112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firework: {fileID: 7447339988649446014}
   animator: {fileID: 9042904888816084267}
+  InitialPosition: {x: 0, y: 0}
   speed: 4
+  returnSpeed: 2
   fireworkLength: 5
   isMoving: 0
   fireworked: 0
@@ -341,7 +343,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: 3.48}
+  m_Offset: {x: 0.018377185, y: 3.4626584}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -352,7 +354,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.66577935, y: 0.6878507}
   m_EdgeRadius: 0
 --- !u!1 &8245271185777663526
 GameObject:
