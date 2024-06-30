@@ -17,6 +17,7 @@ public class Forest : MonoBehaviour, IItemAuto
     public GameObject bird;
     public void Interact(GameObject gameObject)
     {
+        Debug.Log("bird");
         Instantiate(bird, transform.position, Quaternion.identity);
     }
 
