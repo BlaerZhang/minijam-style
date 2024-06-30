@@ -100,7 +100,7 @@ public class Couple : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, detectionRadius);
+        // Gizmos.color = Color.yellow;
+        // Gizmos.DrawSphere(transform.position, detectionRadius);
     }
 }

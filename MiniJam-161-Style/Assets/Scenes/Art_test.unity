@@ -131,9 +131,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 635915000}
     m_Modifications:
-    - target: {fileID: 6105828804839878070, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.05
+    - target: {fileID: 4177755914407035073, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137797792890904981, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6105828804839878070, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -178,6 +182,30 @@ PrefabInstance:
     - target: {fileID: 6524733349627223502, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
       propertyPath: m_Name
       value: NightCity
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533677813747910602, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556046816963080433, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4906132
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556046816963080433, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5904438
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556046816963080433, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556046816963080433, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.7507943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556046816963080433, guid: c1fc1485dd4d2984baa24983429bd89c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.7199999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1028,7 +1056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photoInspectorContent: {fileID: 1261567399}
   batteryUI: {fileID: 1179615338}
-  taskList: {fileID: 0}
+  taskList: {fileID: 753756129}
 --- !u!1 &635914999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1106,17 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_SortAtRoot: 1
+--- !u!114 &753756129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648706203698660681, guid: c0c166b42cd294eabbfc5deb310b09be, type: 3}
+  m_PrefabInstance: {fileID: 993897559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ab6c68b073c4046a3dfb97df58045a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &779439603
 GameObject:
   m_ObjectHideFlags: 0

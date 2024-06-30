@@ -11,7 +11,8 @@ public class Goal : MonoBehaviour
     {
         if (other.GetComponent<ItemInteractor>())
         {
-            OnGoal?.Invoke();
+            if (other.GetComponentInParent<Dog>()) 
+                OnGoal?.Invoke();
         }
     }
 }

@@ -40,7 +40,7 @@ public class Fireworker : MonoBehaviour
                     baseball = parentTransform.GetComponent<Baseball>();
                     if (baseball != null)
                     {
-                        Debug.Log("Baseball Found");
+                        // Debug.Log("Baseball Found");
                         
                     }
                     else
@@ -136,7 +136,7 @@ public class Fireworker : MonoBehaviour
 
     private IEnumerator ShootFirework()
     {
-        Debug.Log("Firework shot");
+        // Debug.Log("Firework shot");
         isMoving = false;
         animator.SetBool("is_moving", isMoving);
         fireworked = true;

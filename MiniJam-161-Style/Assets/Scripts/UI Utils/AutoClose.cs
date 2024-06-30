@@ -17,7 +17,7 @@ namespace UI_Utils
             yield return new WaitForSecondsRealtime(timeToInspect);
             GameManager.Instance.ChangeState(GameManager.GameState.Playing);
 
-            print($"{name} closed");
+            // print($"{name} closed");
         }
     }
 }

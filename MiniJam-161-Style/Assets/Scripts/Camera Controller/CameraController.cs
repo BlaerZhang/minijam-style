@@ -135,7 +135,7 @@ namespace Camera_Controller
             {
                 if (Mathf.Abs(Input.mouseScrollDelta.y) >= 1)
                 {
-                    print("zoom");
+                    // print("zoom");
                     float currentFrameSizeX = _currentFrameSize.x + zoomDelta * Input.mouseScrollDelta.y;
                     currentFrameSizeX = Mathf.Clamp(currentFrameSizeX, cameraXLimits.x, cameraXLimits.y);
 
@@ -161,7 +161,7 @@ namespace Camera_Controller
 
         private void Shoot()
         {
-            print("Shoot");
+            // print("Shoot");
             //Todo: check resource, then -1
 
             Vector3[] corners = new Vector3[4];
@@ -196,7 +196,7 @@ namespace Camera_Controller
                 {
                     //check if being covered over certain percentage
                     List<Collider2D> possibleCover = new List<Collider2D>();
-                    possibleCover = Physics2D.OverlapBoxAll(collider2D.transform.position, bounds.size, 0).ToList();
+                    possibleCover = Physics2D.OverlapBoxAll(collider2D.transform.position, bounds.size, 0, LayerMask.GetMask("Shootable")).ToList();
                     float coveredPercentage = 0f;
                     foreach (var coverCollider in possibleCover)
                     {
@@ -217,6 +217,8 @@ namespace Camera_Controller
                                 coveredPercentage = coveredPercentage < currentCoveredPercentage
                                     ? currentCoveredPercentage
                                     : coveredPercentage;
+
+                                print($"{coverCollider} covered {collider2D} by {coveredPercentage * 100}%");
                             }
                         }
                     }
@@ -242,7 +244,7 @@ namespace Camera_Controller
                 }
             }
 
-            print(captureRect);
+            // print(captureRect);
             OnPhotoCaptured?.Invoke(captureRect);
 
             DetectObjectives(fullyInsideTags, partlyInsideTags);
@@ -286,7 +288,7 @@ namespace Camera_Controller
                 if (failingObjectiveTags.Contains(objTag))
                 {
                     // TODO: show wrong target panel
-                    print("wrong target in photo");
+                    print($"wrong target: {objTag} in photo");
                     GameManager.Instance.ChangeState(GameManager.GameState.LevelFailed);
                     return;
                 }
@@ -294,7 +296,7 @@ namespace Camera_Controller
                 if (winningObjectiveTags.Contains(objTag))
                 {
                     winningObjectiveTags.Remove(objTag);
-                    print("a target found");
+                    print($"{objTag} found");
                 }
             }
 

@@ -28,10 +28,12 @@ namespace Globals
             batteryUI.value = batteryPercentage;
         }
 
-        public void ShowPhotoInspector(bool show = true)
+        public void ShowPhotoInspector(bool result, bool show = true)
         {
-            print("ShowPhotoInspector");
+            // print("ShowPhotoInspector");
             photoInspectorContent.SetActive(show);
+            photoInspectorContent.transform.Find("Photo Result").GetComponent<TMP_Text>().text =
+                result ? "Nice One!" : "Try Again";
         }
     }
 }

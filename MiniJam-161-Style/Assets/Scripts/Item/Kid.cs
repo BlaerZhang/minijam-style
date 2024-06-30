@@ -72,7 +72,7 @@ public class Kid : MonoBehaviour
                     if (Vector2.Distance(transform.position,
                         treehouse.transform.position) < 0.1f)
                     {
-                        Debug.Log("Got to tree");
+                        // Debug.Log("Got to tree");
                         //get to house
                         beenInHouse = true;
                         //animation
@@ -97,13 +97,13 @@ public class Kid : MonoBehaviour
     }
 
     private IEnumerator TreeHouseAnimation() {
-        Debug.Log("Tree triggered");
+        // Debug.Log("Tree triggered");
         inHouse = true;
         kidShootable.SetActive(false);
         kidCollider.SetActive(false);
         treehouse.GetKidsIn();
         yield return new WaitForSeconds(timeInTree);
-        Debug.Log("Tree triggered again.");
+        // Debug.Log("Tree triggered again.");
         treehouse.GetKidsOut();
         inHouse = false;
         kidShootable.SetActive(true);
