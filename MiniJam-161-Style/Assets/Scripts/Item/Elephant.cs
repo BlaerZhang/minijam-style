@@ -51,7 +51,7 @@ public class Elephant : MonoBehaviour, IItem
         // static bool state changed here after animation finishes
         deviceTriggered = true;
 
-        yield return new WaitForSeconds(ElephantDuration);//how long everything stays
+        yield return new WaitForSeconds(ElephantDuration); //how long everything stays
 
         //water disappear
         WaterAnimator.Play("Water-Exit");
@@ -60,8 +60,8 @@ public class Elephant : MonoBehaviour, IItem
 
         //rainbow disappear 
         yield return new WaitForSeconds(0.5f);
-        Rainbow.DOFade(2, 1f);
-        Rainbow.gameObject.SetActive(false);
+        Rainbow.DOFade(0, 1f).OnComplete(() => Rainbow.gameObject.SetActive(false));
+        
 
         NoseAnimator.Play("nose-down");
         yield return new WaitForSeconds(Interval);
