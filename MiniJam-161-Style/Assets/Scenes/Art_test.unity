@@ -1598,6 +1598,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7704108611923921954, guid: 400b4efef389f4749901dfa6423ec90a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1725,7 +1729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5856029776450871909, guid: c0c166b42cd294eabbfc5deb310b09be, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1310.19
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5856029776450871909, guid: c0c166b42cd294eabbfc5deb310b09be, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2511,15 +2515,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 977955208936312691, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_Value
-      value: 0.22
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2516474558520736471, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_Name
       value: Horizontal Battery Percentage
       objectReference: {fileID: 0}
     - target: {fileID: 3185904638636666874, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -14.199998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185904638636666874, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.75
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 6113988809779113971, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2555,7 +2563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8089945108788312716, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 137.6
       objectReference: {fileID: 0}
     - target: {fileID: 8089945108788312716, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2603,11 +2611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8089945108788312716, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -262
+      value: -236.2
       objectReference: {fileID: 0}
     - target: {fileID: 8089945108788312716, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 27
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: 8089945108788312716, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2620,6 +2628,10 @@ PrefabInstance:
     - target: {fileID: 8089945108788312716, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089945108788312716, guid: 854df14716b0d4b7f8b46e2e3efa8f4b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

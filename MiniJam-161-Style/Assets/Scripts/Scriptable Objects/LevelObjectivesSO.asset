@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelObjectivesSO
   m_EditorClassIdentifier: 
   levelObjectives:
-  - levelName: '<i>Flight over a slumbering city</i> :'
+  - levelName: 'Flight over a slumbering city :'
     description: Take a photo with <color=#b51c1c>[bird]</color> and <color=#b51c1c>[light-off
       city]</color>.
     winningObjectiveTags:
@@ -22,30 +22,30 @@ MonoBehaviour:
     - Bird
     failingObjectiveTags:
     - Monster
-  - levelName: '<i>Tree House, kids and Godzilla</i> :'
-    description: Take a photo with <color=#b51c1c>[tree house]</color>, <color=#b51c1c>[kids]</color>
+  - levelName: 'Tree House, kids and Godzilla :'
+    description: Take a photo with <color=#b51c1c>[kids in the tree house]</color>,
       and <color=#b51c1c>[godzilla]</color>.
     winningObjectiveTags:
     - Player
     - TreehouseWithKids
     - Monster
     failingObjectiveTags: []
-  - levelName: '<i>Full swing performance</i> :'
+  - levelName: 'Full swing performance :'
     description: Take a photo with <color=#b51c1c>[the band]</color> performing as
       a trio.
     winningObjectiveTags:
     - Player
     - Band
     failingObjectiveTags: []
-  - levelName: '<i>Failed goalkeeping</i> :'
+  - levelName: 'Failed goalkeeping:'
     description: Take a photo with <color=#b51c1c>[frustrated goalkeeper]</color>.
     winningObjectiveTags:
     - Player
     - GoalkeeperFailed
     failingObjectiveTags: []
-  - levelName: '<i>A romantic night without kids</i> :'
-    description: Take a photo with <color=#b51c1c>[couples in romantic mood]</color>,<color=#b51c1c>[firework]</color>,
-      avoid <color=#b51c1c>[kids]</color> in the photo.
+  - levelName: 'A romantic night without kids :'
+    description: Take a photo with <color=#b51c1c>[couples]</color>,<color=#b51c1c>[firework]</color>,
+      <color=#b51c1c>[rainbow]</color>, avoid <color=#b51c1c>[kids]</color> in it.
     winningObjectiveTags:
     - Player
     - Romantic
