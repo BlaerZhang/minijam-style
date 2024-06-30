@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Treehouse : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject TreehouseWithKids;
+
+    public void GetKidsIn()
     {
-        
+        Debug.Log("Kids in.");
+        TreehouseWithKids.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetKidsOut()
     {
-        
+        Debug.Log("Kids out.");
+        TreehouseWithKids.SetActive(false);
     }
 }
