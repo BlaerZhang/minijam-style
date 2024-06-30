@@ -14,7 +14,9 @@ public class Fireworker : MonoBehaviour
     public bool fireworked = false;
     public bool fireworking = false;
 
-    private Baseball nearbyItemAuto;
+    //private Baseball nearbyItemAuto;
+    //private Baseball baseball;
+    private IItemAuto nearbyItemAuto;
     private Baseball baseball;
     // Start is called before the first frame update
     void Start()
@@ -81,58 +83,55 @@ public class Fireworker : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag("Interactable")) return;
-        Debug.Log("got in fireworker:" + other.ToString());
-        //ShootFirework();
-
-        Baseball itemAuto = other.GetComponent<Baseball>();
-        if (itemAuto != null && itemAuto != nearbyItemAuto)
-        {
-            Debug.Log("Fireworker Trigger Success");
-            nearbyItemAuto = itemAuto;
-
-            //TODO: temp interact, to be optimized
-            itemAuto.Interact(this.gameObject);
-            StartCoroutine(ShootFirework());
-        }
-    }
-
     //void OnTriggerEnter2D(Collider2D other)
     //{
     //    if (!other.CompareTag("Interactable")) return;
-    //    //Debug.Log("got in: " + other.name);
+    //    Debug.Log("got in fireworker:" + other.ToString());
+    //    //ShootFirework();
 
-    //    IItemAuto itemAuto = other.GetComponent<IItemAuto>();
+    //    Baseball itemAuto = other.GetComponent<Baseball>();
     //    if (itemAuto != null && itemAuto != nearbyItemAuto)
     //    {
-    //        //Debug.Log("Trigger success");
+    //        Debug.Log("Fireworker Trigger Success");
     //        nearbyItemAuto = itemAuto;
 
     //        //TODO: temp interact, to be optimized
-    //        nearbyItemAuto.Interact(this.gameObject);
-    //        if (itemAuto.getComponent<Baseball>) {
-    //          StartCoroutine(ShootFirework());
-    //        }
+    //        itemAuto.Interact(this.gameObject);
+    //        StartCoroutine(ShootFirework());
     //    }
     //}
 
-    //void OnTriggerExit2D(Collider2D other)
-    //{
-    //    if (!other.CompareTag("Interactable")) return;
-    //    //Debug.Log("got out:" + other.name);
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Interactable")) return;
+        //Debug.Log("got in: " + other.name);
 
-    //    IItemAuto itemAuto = other.GetComponent<IItemAuto>();
-    //    if (itemAuto != null && itemAuto == nearbyItemAuto)
-    //    {
-    //        nearbyItemAuto = null;
-    //    }
-    //}
+        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
+        if (itemAuto != null && itemAuto != nearbyItemAuto)
+        {
+            //Debug.Log("Trigger success");
+            nearbyItemAuto = itemAuto;
 
+            //TODO: temp interact, to be optimized
+            nearbyItemAuto.Interact(this.gameObject);
+            if (itemAuto is Baseball )
+            {
+                StartCoroutine(ShootFirework());
+            }
+        }
+    }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Interactable")) return;
+        //Debug.Log("got out:" + other.name);
 
-
+        IItemAuto itemAuto = other.GetComponent<IItemAuto>();
+        if (itemAuto != null && itemAuto == nearbyItemAuto)
+        {
+            nearbyItemAuto = null;
+        }
+    }
 
 
     private IEnumerator ShootFirework()
